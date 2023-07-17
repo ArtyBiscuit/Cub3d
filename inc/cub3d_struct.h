@@ -7,15 +7,17 @@ typedef struct	s_mlx_data
 	mlx_image_t	*img;
 }				t_mlx_data;
 
-typedef struct	s_map_data
+typedef struct	s_map
 {
-	int		**format_map;
-	char	**raw_map;
+	char	*raw_map;
 	int		size_x;
 	int		size_y;
-	char	**texture_wall;
-	char	**ceiling_color;
-	char	**floor_color;
+	char	*texture_north;
+	char	*texture_south;
+	char	*texture_west;
+	char	*texture_east;
+	int		*ceiling_color;
+	int		*floor_color;
 }				t_map;
 
 typedef struct	s_player
@@ -25,7 +27,7 @@ typedef struct	s_player
 	float	dir_x;
 	float	dir_y;
 	float	plane_x;
-	float	plane_y;	
+	float	plane_y;
 	float	plane_ratio;
 	float	view;
 	float	theta;
@@ -34,8 +36,8 @@ typedef struct	s_player
 typedef struct	s_parameter
 {
 	int		crossshair_size;
-    int		crossshair_color;
-    float   sensitivity;
+	int		crossshair_color;
+	float	sensitivity;
 	float	fov;
 }				t_parameter;
 
@@ -71,10 +73,10 @@ typedef struct	s_key
 
 typedef struct  s_sprite
 {
-    int             number;
-    mlx_texture_t   *texture;
-    mlx_image_t     *img;
-}               t_sprite;
+	int				number;
+	mlx_texture_t	*texture;
+	mlx_image_t		*img;
+}				t_sprite;
 
 
 typedef struct	s_main
@@ -85,7 +87,7 @@ typedef struct	s_main
 	t_key		key;
 	t_player	player;
 	t_ray		*ray_array;
-    t_sprite    sprite;
+	t_sprite	sprite;
 	float		frame_curent_time;
 	float		frame_old_time;
 }				t_main;
