@@ -45,7 +45,7 @@ char	*add_spaces(char *line, int max_len)
 int	check_arg_are_refile(t_map map)
 {
 	if (!map.texture_north || !map.texture_south || !map.texture_west
-		|| !map.texture_east || !map.texture_floor || !map.texture_ceiling)
+		|| !map.texture_east || !map.floor_color || !map.ceiling_color)
 		return (1);
 	return (0);
 }

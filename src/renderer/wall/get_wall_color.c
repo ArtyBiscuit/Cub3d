@@ -11,18 +11,12 @@
 /* ************************************************************************** */
 #include "../../../inc/cub3d.h"
 
-void	get_wall_color(int **map, t_ray *ray)
+void	get_wall_color(char **map, t_ray *ray)
 {
 	int wall_color;
 
-	if (map[ray->ray_pos_x][ray->ray_pos_y] == 1)
+	if (map[ray->ray_pos_x][ray->ray_pos_y] == '1')
 		wall_color = 0xf54242ff;
-	else if (map[ray->ray_pos_x][ray->ray_pos_y] == 2)
-		wall_color = 0x325efcff;
-	else if (map[ray->ray_pos_x][ray->ray_pos_y] == 3)
-		wall_color = 0x32fc62ff;
-	else if (map[ray->ray_pos_x][ray->ray_pos_y] == 4)
-		wall_color = 0xe6d11cff;
 	else
 		wall_color = 0xffffffff;
 	if (ray->side == 1)

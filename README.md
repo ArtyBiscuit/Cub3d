@@ -1,2 +1,0 @@
-# Cub3d
-yolo

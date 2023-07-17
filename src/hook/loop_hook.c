@@ -23,11 +23,13 @@ void loop_hook(void* param)
 	t_main	*main;
 
 	main = param;
-	game_fps(main);
+	//game_fps(main);
 	ft_memset(main->mlx_data.img->pixels, 0, main->mlx_data.img->width * main->mlx_data.img->height * sizeof(int32_t));
 	key_applied(main);
 	algo(main, main->ray_array);
 	render(main, main->ray_array);
+	printf("\e[1A\e[2Kesc: %d\n", main->key.esc);
+	//mouse(main);
 	
 	return ;
 }

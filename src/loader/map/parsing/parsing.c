@@ -53,8 +53,7 @@ static char	**file_to_tab_char(char *file)
 	line = get_next_line(fd);
 	while (line)
 	{
-		line_tmp = ft_strjoin(line_tmp, line);
-		free(line);
+		line_tmp = ft_secur_cat(line_tmp, line);
 		line = get_next_line(fd);
 	}
 	map = ft_split(line_tmp, '\n');
@@ -62,11 +61,22 @@ static char	**file_to_tab_char(char *file)
 	return (map);
 }
 
+int	map_len(char **tab_file)
+{
+	int i;
+
+	i = 0;
+	while(tab_file[i])
+		i++;
+	return (i - 8);
+}
+
 void	parsing_map_arg(t_map *map, char *file)
 {
 	char	**tab_file;
 
 	tab_file = file_to_tab_char(file);
-	parsing_arguments(&map, tab_file);
-	parsing_map(&map, tab_file);
+	parsing_arguments(map, tab_file);
+	map->format_map = malloc(sizeof(char) * map_len(tab_file) + 1);
+	parsing_map(map, tab_file);
 }

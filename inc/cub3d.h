@@ -10,15 +10,12 @@
 # include "../lib/libft/libft.h"
 # include "cub3d_struct.h"
 
-# define WIDTH 1900
-# define HEIGHT 1000
+# define WIDTH 1080
+# define HEIGHT 720
 # define MINIMAP_SIZE 80
 # define PI 3.14159265359
 # define MLX_ERROR 1
 # define PAR_ERROR 122
-
-/***************  STRUCT  ****************/
-
 
 /***************  FUNCTION  ****************/
 //	src/collider
@@ -44,14 +41,25 @@ void    player_view_down(t_main *main);
 //	src/init
 int		init_values(t_main *main);
 //	src/loader
-//	src/loader/map
+//	src/loader/map/parsing
+void	parsing_arguments(t_map *map, char **tab_file);
+void	check_arguments(int argc, char **argv);
+void	parsing_map(t_map *map, char **tab_file);
+void	parsing_map_arg(t_map *map, char *file);
+int     check_arg_are_refile(t_map map);
+int	    is_space(char c);
+int	    is_upper_case(char c);
+char	*add_spaces(char *line, int max_len);
+int	    check_arg_are_refile(t_map map);
+int	    check_arg_format(char *arg);
 //	src/loader/textur
 void    load_sprite(t_main *main);
 //	src/raycasting
 void	check_infinite_value(t_ray *ray);
 void	get_ray_side(t_player player, t_ray *curent_ray);
-void	perform_dda(int **map, t_ray *ray);
+void	perform_dda(char **map, t_ray *ray);
 void	algo(t_main *main, t_ray *ray_array);
+
 //	src/raycasting/fisheye
 float	get_ray_min_dist(t_ray ray);
 //	src/renderer
@@ -61,7 +69,7 @@ void	minimap(t_main *main, int pos_x, int pos_y, float zoom);
 //	src/renderer/wall
 void	draw_wall(t_main *main, t_ray *ray_array);
 void	draw_line(t_main *main, int start, int end, t_ray ray);
-void	get_wall_color(int **map, t_ray *ray);
+void	get_wall_color(char **map, t_ray *ray);
 //	src/renderer/player
 void	player_rotate(t_main *main, float theta);
 void    crosshair(t_main *main);
@@ -76,4 +84,6 @@ void	map(t_main *main, t_ray *ray_array, int pos_x, int pos_y);
 
 void	put_circle(mlx_image_t *img, int pos_x, int pos_y, int radius);
 void    mouv_weapon(t_main *main);
+
+void mouse(t_main *main, int flag);
 #endif

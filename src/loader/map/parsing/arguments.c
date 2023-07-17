@@ -34,10 +34,10 @@ static int	*get_floor_ceiling_texture(char *line)
 	int		j;
 	int		count;
 	int		*tab_rgb;
-	char	*texture;
 
 	i = 1;
 	count = 0;
+	tab_rgb = malloc(sizeof(int) * 3);
 	while (is_space(line[i]))
 		i++;
 	while (count != 3)
@@ -67,9 +67,9 @@ static void	refile_textures(t_map *map, char *line)
 	else if (!ft_strncmp(line, "EA ", 3) && !map->texture_east)
 		map->texture_east = get_wall_texture(&line[i]);
 	else if (!ft_strncmp(line, "F ", 2) && !map->texture_north)
-		map->texture_floor = get_floor_ceiling_texture(&line[i]);
+		map->floor_color = get_floor_ceiling_texture(&line[i]);
 	else if (!ft_strncmp(line, "C ", 2) && !map->texture_south)
-		map->texture_ceiling = get_floor_ceiling_texture(&line[i]);
+		map->ceiling_color = get_floor_ceiling_texture(&line[i]);
 	else
 	{
 		ft_putstr_fd("Error, incorrect texture\n", 2);
@@ -77,12 +77,12 @@ static void	refile_textures(t_map *map, char *line)
 	}
 }
 
-void	parsing_arguments(t_map map, char **tab_file)
+void	parsing_arguments(t_map *map, char **tab_file)
 {
 	int	i;
 
 	i = 0;
-	while (check_arg_are_refile(map))
+	while (check_arg_are_refile(*map))
 	{
 		if (tab_file[i][0] == '\n')
 			i++;
@@ -93,7 +93,7 @@ void	parsing_arguments(t_map map, char **tab_file)
 		}
 		else
 		{
-			refile_textures(&map, tab_file[i]);
+			refile_textures(map, tab_file[i]);
 			i++;
 		}
 	}

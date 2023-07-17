@@ -39,7 +39,7 @@ static void	increment_delta(t_ray *ray)
 	}
 }
 
-void	perform_dda(int **map, t_ray *ray)
+void	perform_dda(char **map, t_ray *ray)
 {
 	int	hit;
 
@@ -47,7 +47,7 @@ void	perform_dda(int **map, t_ray *ray)
 	while(hit == 0)
 	{
 		increment_step(ray);
-		if (map[ray->ray_pos_x][ray->ray_pos_y] > 0)
+		if (map[ray->ray_pos_x][ray->ray_pos_y] == '1')
 		{
 			hit = 1;
 			return ;

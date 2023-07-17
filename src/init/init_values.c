@@ -18,7 +18,7 @@ int	init_values(t_main *main)
 
 	//parameter
 	main->parameter.fov = 90.0f;
-	main->parameter.crossshair_size = 20;
+	main->parameter.crossshair_size = 5;
 	main->parameter.crossshair_color = 0xffff00ff;
 
 	//fps
@@ -39,14 +39,10 @@ int	init_values(t_main *main)
 	main->key.A = 0;
 	main->key.S = 0;
 	main->key.D = 0;
-	main->key.view_right = 0;
-	main->key.view_right = 0;
-	main->key.view_up = 0;
-	main->key.view_down = 0;
+	main->key.esc = 0;
 
 	//map
-	main->map_data.size_x = 24;
-	main->map_data.size_y = 24;
+	parsing_map_arg(&main->map_data, "maps/main_map.cub");
 
 	return (0);
 }

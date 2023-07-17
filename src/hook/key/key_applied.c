@@ -10,12 +10,5 @@ void	key_applied(t_main *main)
 		player_movement_right(main);
 	if (main->key.A)
 		player_movement_left(main);
-	if (main->key.view_left)
-		player_rotate(main, 0.1f);
-	if (main->key.view_right)
-		player_rotate(main, -0.1f);
-	if (main->key.view_up)
-		player_view_up(main);
-	if (main->key.view_down)
-		player_view_down(main);
+	mouse(main, main->key.esc);
 }

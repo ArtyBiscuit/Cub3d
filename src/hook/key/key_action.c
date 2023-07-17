@@ -10,14 +10,10 @@ void    key_action_press(mlx_key_data_t keydata, t_key *key)
 		key->S = 1;
 	if(keydata.key == 68 && keydata.action == MLX_PRESS)
 		key->D = 1;
-	if(keydata.key == 262 && keydata.action == MLX_PRESS)
-		key->view_left = 1;
-	if(keydata.key == 263 && keydata.action == MLX_PRESS)
-		key->view_right = 1;
-	if(keydata.key == 265 && keydata.action == MLX_PRESS)
-		key->view_up = 1;
-	if(keydata.key == 264 && keydata.action == MLX_PRESS)
-		key->view_down = 1;
+	if(keydata.key == 256 && key->esc == 1 && keydata.action == MLX_PRESS)
+		key->esc = 0;
+	else if(keydata.key == 256 && key->esc == 0 && keydata.action == MLX_PRESS)
+		key->esc = 1;
 }
 
 void    key_action_release(mlx_key_data_t keydata, t_key *key)
@@ -30,12 +26,5 @@ void    key_action_release(mlx_key_data_t keydata, t_key *key)
 		key->S = 0;
 	if(keydata.key == 68 && keydata.action == MLX_RELEASE)
 		key->D = 0;
-	if(keydata.key == 262 && keydata.action == MLX_RELEASE)
-		key->view_left = 0;
-	if(keydata.key == 263 && keydata.action == MLX_RELEASE)
-		key->view_right = 0;
-	if(keydata.key == 265 && keydata.action == MLX_RELEASE)
-		key->view_up = 0;
-	if(keydata.key == 264 && keydata.action == MLX_RELEASE)
-		key->view_down = 0;
+
 }

@@ -23,9 +23,15 @@ SRC = src/main.c								\
 	  src/hook/loop_hook.c						\
 	  src/hook/key/key_action.c					\
 	  src/hook/key/key_applied.c				\
+	  src/hook/mouse/mouse_hook.c				\
 	  src/hook/movement/player_movement.c		\
 	  src/hook/movement/player_view.c			\
 	  src/init/init_values.c					\
+	  src/loader/map/parsing/arguments.c		\
+	  src/loader/map/parsing/check_file.c		\
+	  src/loader/map/parsing/map.c				\
+	  src/loader/map/parsing/parsing.c			\
+	  src/loader/map/parsing/utils.c			\
 	  src/loader/texture/load_texture.c			\
 	  src/raycasting/fisheye/get_ray_min_dist.c	\
 	  src/raycasting/check_infinite_value.c		\
