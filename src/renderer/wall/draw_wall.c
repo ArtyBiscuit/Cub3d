@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 17:11:36 by arforgea          #+#    #+#             */
-/*   Updated: 2023/06/29 17:12:09 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/07/18 10:10:46 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../../inc/cub3d.h"
+
+#include "cub3d.h"
 
 void	draw_wall(t_main *main, t_ray *ray_array)
 {
@@ -32,7 +33,7 @@ void	draw_wall(t_main *main, t_ray *ray_array)
 			wall_line_start = 0;
 		if (wall_line_end >= HEIGHT)
 			wall_line_end = HEIGHT - 1;
-		get_wall_color(main->map_data.format_map, &ray_array[i]);
+		get_wall_color(main->map.format_map, &ray_array[i]);
 		draw_line(main, wall_line_start, wall_line_end, ray_array[i]);
 		i++;
 	}

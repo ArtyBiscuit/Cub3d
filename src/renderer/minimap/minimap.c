@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:18:59 by arforgea          #+#    #+#             */
-/*   Updated: 2023/06/30 17:26:44 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/07/18 10:12:01 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../../inc/cub3d.h"
-#include <math.h>
-#include <stdio.h>
+
+#include "cub3d.h"
+
 /*
 typedef struct	s_vector
 {
@@ -63,11 +63,11 @@ void	minimap(t_main *main, int pos_x, int pos_y, float zoom)
 			dist = sqrt(c * c + d * d);
 			if (dist < MINIMAP_SIZE)
 				mlx_put_pixel(main->mlx_data.img, i + pos_x - MINIMAP_SIZE, j + pos_y - MINIMAP_SIZE, 0x000000ff);
-			if (pix_x > 0 && pix_y > 0 && pix_x < main->map_data.size_x && pix_y < main->map_data.size_y)
+			if (pix_x > 0 && pix_y > 0 && pix_x < main->map.size_x && pix_y < main->map.size_y)
 			{
-				if (dist < MINIMAP_SIZE - 3 && main->map_data.format_map[(int)pix_x][(int)pix_y] == '0')
+				if (dist < MINIMAP_SIZE - 3 && main->map.format_map[(int)pix_x][(int)pix_y] == '0')
 					mlx_put_pixel(main->mlx_data.img, i + pos_x - MINIMAP_SIZE, j + pos_y - MINIMAP_SIZE, 0x9c9b9aff);
-				if (dist < MINIMAP_SIZE - 3 && main->map_data.format_map[(int)pix_x][(int)pix_y] != '0')
+				if (dist < MINIMAP_SIZE - 3 && main->map.format_map[(int)pix_x][(int)pix_y] != '0')
 					mlx_put_pixel(main->mlx_data.img, i + pos_x - MINIMAP_SIZE, j + pos_y - MINIMAP_SIZE, 0xe0e0e0ff);
 				if (i == MINIMAP_SIZE - 3 && j == MINIMAP_SIZE)
 					mlx_put_pixel(main->mlx_data.img, i + pos_x - MINIMAP_SIZE, j + pos_y - MINIMAP_SIZE, 0xff0000ff);

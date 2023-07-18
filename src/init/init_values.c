@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_values.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:53:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/06/29 14:55:48 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/07/18 10:09:22 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../inc/cub3d.h"
-#include <math.h>
+
+#include "cub3d.h"
 
 int	init_values(t_main *main)
 {
@@ -42,7 +42,13 @@ int	init_values(t_main *main)
 	main->key.esc = 0;
 
 	//map
-	parsing_map_arg(&main->map_data, "maps/main_map.cub");
+	main->map.texture_north = NULL;
+	main->map.texture_south = NULL;
+	main->map.texture_west = NULL;
+	main->map.texture_east = NULL;
+	main->map.floor_color = 0;
+	main->map.ceiling_color = 0;
+	parsing_map_arg(&main->map, "maps/main_map.cub");
 
 	return (0);
 }

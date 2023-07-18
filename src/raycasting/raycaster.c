@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 17:22:23 by arforgea          #+#    #+#             */
-/*   Updated: 2023/06/30 17:28:45 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/07/18 10:09:58 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../inc/cub3d.h"
+
+#include "cub3d.h"
 
 static int	raycast(t_main *main, t_ray *ray_array)
 {
@@ -28,7 +29,7 @@ static int	raycast(t_main *main, t_ray *ray_array)
 		ray->ray_pos_x = (int)main->player.pos_x;
 		ray->ray_pos_y = (int)main->player.pos_y;
 		get_ray_side(main->player, ray);
-		perform_dda(main->map_data.format_map, ray);
+		perform_dda(main->map.format_map, ray);
 		cmp++;
 	}
 	return (0);
