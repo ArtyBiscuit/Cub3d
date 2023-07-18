@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/17 17:56:06 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/18 13:29:13 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,17 @@ static int	check_plot_zero(char **file, int x, int y)
 static int	check_plot(char **file, int i, int j)
 {
 
-	if (file[i][j] && file[i][j] != '1' && file[i][j] != '0'
-		&& file[i][j] != 'N' && file[i][j] != 'S'
-		&& file[i][j] != 'W' && file[i][j] != 'E')
+	if (file[i][j] && file[i][j] != ' ' && file[i][j] != '1'
+		&& file[i][j] != '0' && file[i][j] != 'N'
+		&& file[i][j] != 'S' && file[i][j] != 'W'
+		&& file[i][j] != 'E')
 	{
 		ft_putstr_fd("Error, wrong plot format\n", 2);
 		exit(1);
 	}
 	else if (file[i][j] && file[i][j] == '0' && check_plot_zero(file, j, i))
 	{
-		ft_putstr_fd("Error, wrong map format\n", 2);
+		ft_putstr_fd("Error, wrong map format lol \n", 2);
 		exit(1);
 	}
 	return (0);

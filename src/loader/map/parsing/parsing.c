@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:12:30 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/17 14:27:46 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/18 12:55:52 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	check_arg_format(char *arg)
 	}
 	if (count != 2 && count != 1)
 		return (1);
-	i += count;
 	if (!is_space(arg[i]))
 		return (1);
 	while (is_space(arg[i++]))

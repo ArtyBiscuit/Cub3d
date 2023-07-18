@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_arguments.c                                :+:      :+:    :+:   */
+/*   arguments.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:15:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/17 17:44:07 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/18 11:18:40 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ static void	refile_textures(t_map *map, char *line)
 		map->texture_west = get_wall_texture(&line[i]);
 	else if (!ft_strncmp(line, "EA ", 3) && !map->texture_east)
 		map->texture_east = get_wall_texture(&line[i]);
-	else if (!ft_strncmp(line, "F ", 2) && !map->texture_north)
+	else if (!ft_strncmp(line, "F ", 2) && !map->floor_color)
 		map->floor_color = get_floor_ceiling_texture(&line[i]);
-	else if (!ft_strncmp(line, "C ", 2) && !map->texture_south)
+	else if (!ft_strncmp(line, "C ", 2) && !map->ceiling_color)
 		map->ceiling_color = get_floor_ceiling_texture(&line[i]);
 	else
 	{
@@ -89,6 +89,7 @@ void	parsing_arguments(t_map *map, char **tab_file)
 		else if (check_arg_format(tab_file[i]))
 		{
 			ft_putstr_fd("Error, incorrect format texture\n", 2);
+			printf("ligne %d\n", (i + 1));
 			exit(1);
 		}
 		else
