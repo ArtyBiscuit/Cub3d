@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:12:30 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/18 12:55:52 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/18 14:12:09 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,30 @@ int	check_arg_format(char *arg)
 static char	**file_to_tab_char(char *file)
 {
 	int		fd;
+	int		index;
 	char	*line;
-	char	*line_tmp;
-	char	**map;
+	char	**tab_file;
 
-	line_tmp = NULL;
+	index = 0;
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{
-		line_tmp = ft_secur_cat(line_tmp, line);
+		index++;
 		line = get_next_line(fd);
 	}
-	map = ft_split(line_tmp, '\n');
+	tab_file = malloc(sizeof(char *) * index);
 	close(fd);
-	return (map);
+	index = 0;
+	fd = open(file, O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		tab_file[index] = ft_strdup(line);
+		line = get_next_line(fd);
+		index++;
+	}
+	return (tab_file);
 }
 
 int	map_len(char **tab_file)
@@ -72,10 +81,11 @@ int	map_len(char **tab_file)
 
 void	parsing_map_arg(t_map *map, char *file)
 {
+	int		index;
 	char	**tab_file;
 
 	tab_file = file_to_tab_char(file);
-	parsing_arguments(map, tab_file);
+	index = parsing_arguments(map, tab_file);
 	map->format_map = malloc(sizeof(char) * map_len(tab_file) + 1);
-	parsing_map(map, tab_file);
+	parsing_map(map, tab_file, index);
 }

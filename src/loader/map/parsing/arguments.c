@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:15:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/18 11:18:40 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/18 14:11:42 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	refile_textures(t_map *map, char *line)
 	}
 }
 
-void	parsing_arguments(t_map *map, char **tab_file)
+int	parsing_arguments(t_map *map, char **tab_file)
 {
 	int	i;
 
@@ -98,4 +98,5 @@ void	parsing_arguments(t_map *map, char **tab_file)
 			i++;
 		}
 	}
+	return (i);
 }

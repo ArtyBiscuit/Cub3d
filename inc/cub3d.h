@@ -42,9 +42,9 @@ void    player_view_down(t_main *main);
 int		init_values(t_main *main);
 //	src/loader
 //	src/loader/map/parsing
-void	parsing_arguments(t_map *map, char **tab_file);
+int		parsing_arguments(t_map *map, char **tab_file);
 void	check_arguments(int argc, char **argv);
-void	parsing_map(t_map *map, char **tab_file);
+void	parsing_map(t_map *map, char **tab_file, int index);
 void	parsing_map_arg(t_map *map, char *file);
 int     check_arg_are_refile(t_map map);
 int	    is_space(char c);
