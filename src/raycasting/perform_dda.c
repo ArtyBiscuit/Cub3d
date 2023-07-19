@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   perform_dda.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 17:27:04 by arforgea          #+#    #+#             */
-/*   Updated: 2023/06/29 18:00:31 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/07/19 14:38:47 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../inc/cub3d.h"
+
+#include "cub3d.h"
 
 static void	increment_step(t_ray *ray)
 {
@@ -47,7 +48,8 @@ void	perform_dda(char **map, t_ray *ray)
 	while(hit == 0)
 	{
 		increment_step(ray);
-		if (map[ray->ray_pos_x][ray->ray_pos_y] == '1')
+		if (map[ray->ray_pos_x][ray->ray_pos_y]
+		&& map[ray->ray_pos_x][ray->ray_pos_y] == '1')
 		{
 			hit = 1;
 			return ;
