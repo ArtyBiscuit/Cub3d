@@ -10,14 +10,14 @@ typedef struct	s_mlx_data
 typedef struct	s_map
 {
 	char	**format_map;
-	int		size_x;
-	int		size_y;
 	char	*texture_north;
 	char	*texture_south;
 	char	*texture_west;
 	char	*texture_east;
 	int		*ceiling_color;
 	int		*floor_color;
+	int		size_x;
+	int		size_y;
 }				t_map;
 
 typedef struct	s_player
@@ -70,9 +70,9 @@ typedef struct	s_key
 
 typedef struct	s_sprite
 {
-	int				number;
 	mlx_texture_t	*texture;
 	mlx_image_t		*img;
+	int				number;
 }				t_sprite;
 
 
@@ -83,8 +83,8 @@ typedef struct	s_main
 	t_parameter	parameter;
 	t_key		key;
 	t_player	player;
-	t_ray		*ray_array;
 	t_sprite	sprite;
+	t_ray		*ray_array;
 	float		frame_curent_time;
 	float		frame_old_time;
 }				t_main;

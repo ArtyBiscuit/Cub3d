@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:16:26 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/19 15:13:35 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/20 14:46:07 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,22 @@ int	is_upper_case(char c)
 	return (0);
 }
 
-char	*add_spaces(char *line, int max_len)
-{
-	int		i;
-	int		j;
-	char	*new_line;
+// char	*add_spaces(char *line, int max_len)
+// {
+// 	int		i;
+// 	int		j;
+// 	char	*new_line;
 
-	i = 0;
-	j = 0;
-	new_line = malloc(sizeof(char) * (max_len + 1));
-	while (line[j] )
-		new_line[i++] = line[j++];
-	while (i <= max_len)
-		new_line[i++] = '#';
-	new_line[i] = '\0';
-	return (new_line);
-}
+// 	i = 0;
+// 	j = 0;
+// 	new_line = malloc(sizeof(char) * (max_len + 1));
+// 	while (line[j])
+// 		new_line[i++] = line[j++];
+// 	while (i <= max_len)
+// 		new_line[i++] = '#';
+// 	new_line[i] = '\0';
+// 	return (new_line);
+// }
 
 int	check_arg_are_refile(t_map map)
 {

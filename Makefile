@@ -14,7 +14,7 @@ INC = -Iinclude -Iinc
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 MAKE_LIBFT = $(LIBFT_DIR)/libft.a
 MAKE_LIBX = $(LIBX_DIR)/build/libmlx42.a
-LIB =  $(MAKE_LIBFT) $(MAKE_LIBX) -ldl -lglfw -pthread -lm
+LIB = $(MAKE_LIBFT) $(MAKE_LIBX) -ldl -lglfw -pthread -lm
 
 ################## SRC ###################
 SRC = src/main.c								\

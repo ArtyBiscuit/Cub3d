@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:53:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/07/18 10:09:22 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:43:19 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	init_values(t_main *main)
 {
 	main->ray_array = malloc(sizeof(t_ray) * WIDTH);
+
+	ft_memset(main->ray_array, 0, sizeof(t_ray) * WIDTH);
 
 	//parameter
 	main->parameter.fov = 90.0f;

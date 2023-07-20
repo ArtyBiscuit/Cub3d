@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/19 15:08:26 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/20 17:11:47 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,37 @@
 static char	**reformatting_map(char **template)
 {
 	int		i;
-	size_t	max_len;
+	int		j;
+	int		max_len;
+	char	**reformatting_map;
 
 	i = 0;
 	max_len = 0;
 	while (template[i])
 	{
-		if (ft_strlen(template[i]) > max_len)
+		if ((int)ft_strlen(template[i]) > max_len)
 			max_len = ft_strlen(template[i]);
 		i++;
 	}
+	reformatting_map = malloc(sizeof(char*) * (i + 1));
 	i = 0;
 	while (template[i])
 	{
-		if (ft_strlen(template[i]) < max_len)
-			template[i] = add_spaces(template[i], max_len);
+		j = 0;
+		reformatting_map[i] = malloc(sizeof(char) * (max_len + 1));
+		while (template[i][j])
+		{
+			reformatting_map[i][j] = template[i][j];
+			while (i != max_len)
+				reformatting_map[i][j++] = ' ';
+			j++;
+		}
+		reformatting_map[i][j] = '\0';
 		i++;
 	}
-	return (template);
+	reformatting_map[i] = NULL;
+	free_tab(template);
+	return (reformatting_map);
 }
 
 static int	check_plot_zero(char **file, int i, int j)

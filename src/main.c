@@ -17,6 +17,13 @@ int32_t	main(void)
 {
 	t_main		main;
 
+	char	*test = malloc(sizeof(char) * 0x10);
+
+	memset(test, 0,  0x10);
+
+	free(test);
+	test = NULL;
+
 	main.mlx_data.mlx = mlx_init(WIDTH, HEIGHT, "cub3d", false);
 	if (!main.mlx_data.mlx)
 		ft_error();
@@ -26,6 +33,15 @@ int32_t	main(void)
 		ft_error();
 
 	init_values(&main);
+	test = malloc(0x10);
+
+	strcpy(test, "hello world\0");
+
+	printf("%s\n", test);
+
+	free(test);
+	test = NULL;
+
 	load_sprite(&main);
 
 	mlx_key_hook(main.mlx_data.mlx, key_hook, &main.key);

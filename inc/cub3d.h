@@ -77,8 +77,9 @@ void    crosshair(t_main *main);
 float	rad_converter(float radian);
 float	deg_converter(float degree);
 //	src/utils/free
-void    free_all(t_main *main);
-void    free_ray_array(t_ray *ray_array);
+void	free_all(t_main *main);
+void	free_ray_array(t_ray *ray_array);
+void	free_tab(char **tab);
 //	PROTOTYP-KEY [src/hook/key_hook.c]
 void	map(t_main *main, t_ray *ray_array, int pos_x, int pos_y);
 
