@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/20 17:11:47 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/21 14:52:48 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	**reformatting_map(char **template)
 	int		i;
 	int		j;
 	int		max_len;
-	char	**reformatting_map;
+	char	**reformatting_map = NULL;
 
 	i = 0;
 	max_len = 0;
@@ -105,6 +105,7 @@ static int	check_plot(char **file, int i, int j)
 		&& file[i][j] != 'E')
 	{
 		ft_putstr_fd("Error, wrong plot format\n", 2);
+		printf("%d;%d\n", i , j);
 		exit(1);
 	}
 	else if (file[i][j] && file[i][j] == '0' && check_plot_zero(file, i, j))
@@ -138,7 +139,6 @@ void	parsing_map(t_map *map, char **tab_file, int index)
 			j++;
 		}
 		map->format_map[k] = tab_file[index];
-		// printf("%s", map->format_map[k]);
 		index++;
 		k++;
 	}

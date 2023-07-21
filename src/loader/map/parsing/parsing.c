@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:12:30 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/20 15:54:18 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/21 14:54:53 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,20 +82,15 @@ int	map_len(char **tab_file)
 
 void	parsing_map_arg(t_map *map, char *file)
 {
-	//int	i;
 	char	**tab_file;
 	int		index;
 	size_t	size = 0;
 
+	index = 0;
 	tab_file = file_to_tab_char(file);
 	index = parsing_arguments(map, tab_file);
 	size = map_len(tab_file);
-	map->format_map = malloc(sizeof(char) * size + 1);
-	//i = index + 1;
-	// while (tab_file[i])
-	// {
-	// 	printf("%s", tab_file[i]);
-	// 	i++;
-	// }
+	printf("%zu\n", size);
+	map->format_map = malloc(sizeof(char) * size + 100000);
 	parsing_map(map, tab_file, (index + 1));
 }
