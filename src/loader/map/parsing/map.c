@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/21 14:52:48 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/24 14:00:47 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ static char	**reformatting_map(char **template)
 		while (template[i][j])
 		{
 			reformatting_map[i][j] = template[i][j];
-			while (i != max_len)
-				reformatting_map[i][j++] = ' ';
 			j++;
 		}
+		while (j != max_len)
+			reformatting_map[i][j++] = ' ';
 		reformatting_map[i][j] = '\0';
 		i++;
 	}
