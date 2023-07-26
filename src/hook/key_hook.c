@@ -12,9 +12,9 @@
 #include "../../inc/cub3d.h"
 #include <stdio.h>
 
-void	key_hook(mlx_key_data_t keydata, void* param)
+void	key_hook(mlx_key_data_t keydata, void *param)
 {
-	t_key *key;
+	t_key	*key;
 
 	key = param;
 	key_action_press(keydata, key);

@@ -57,7 +57,25 @@ typedef struct	s_ray
 	int		wall_color;
 	int		side;
 	int		ray_id;
-}				t_ray;
+	int		wall_side;
+}			t_ray;
+
+typedef struct	s_texture
+{
+	int	*pixels;
+	int	size_x;
+	int	size_y;
+}				t_texture;
+
+typedef struct	s_wall_line
+{
+	t_texture	*texture;
+	float		line_dist;
+	int			wall_height;
+	int			start;
+	int			end;
+	t_ray		*ray;
+}				t_wall_line;
 
 typedef struct	s_key
 {
@@ -68,12 +86,6 @@ typedef struct	s_key
 	int	esc;
 }				t_key;
 
-typedef struct	s_sprite
-{
-	mlx_texture_t	*texture;
-	mlx_image_t		*img;
-	int				number;
-}				t_sprite;
 
 
 typedef struct	s_main
@@ -83,8 +95,8 @@ typedef struct	s_main
 	t_parameter	parameter;
 	t_key		key;
 	t_player	player;
-	t_sprite	sprite;
 	t_ray		*ray_array;
+	t_texture	**wall_texture;
 	float		frame_curent_time;
 	float		frame_old_time;
 }				t_main;

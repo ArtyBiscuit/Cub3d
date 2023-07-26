@@ -48,8 +48,7 @@ void	perform_dda(char **map, t_ray *ray)
 	while(hit == 0)
 	{
 		increment_step(ray);
-		if (map[ray->ray_pos_x][ray->ray_pos_y]
-		&& map[ray->ray_pos_x][ray->ray_pos_y] == '1')
+		if (map[ray->ray_pos_x][ray->ray_pos_y] == '1')
 		{
 			hit = 1;
 			return ;

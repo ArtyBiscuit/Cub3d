@@ -26,23 +26,6 @@ int	is_upper_case(char c)
 	return (0);
 }
 
-// char	*add_spaces(char *line, int max_len)
-// {
-// 	int		i;
-// 	int		j;
-// 	char	*new_line;
-
-// 	i = 0;
-// 	j = 0;
-// 	new_line = malloc(sizeof(char) * (max_len + 1));
-// 	while (line[j])
-// 		new_line[i++] = line[j++];
-// 	while (i <= max_len)
-// 		new_line[i++] = '#';
-// 	new_line[i] = '\0';
-// 	return (new_line);
-// }
-
 int	check_arg_are_refile(t_map map)
 {
 	if (!map.texture_north || !map.texture_south || !map.texture_west

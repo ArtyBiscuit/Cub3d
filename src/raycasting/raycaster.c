@@ -30,6 +30,7 @@ static int	raycast(t_main *main, t_ray *ray_array)
 		ray->ray_pos_y = (int)main->player.pos_y;
 		get_ray_side(main->player, ray);
 		perform_dda(main->map.format_map, ray);
+		ray->wall_side = get_cardinal_side(ray);
 		cmp++;
 	}
 	return (0);

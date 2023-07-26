@@ -9,17 +9,20 @@
 /*   Updated: 2023/06/29 17:14:29 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../../inc/cub3d.h"
+#include "cub3d.h"
 
-void	get_wall_color(char **map, t_ray *ray)
+t_texture *get_wall_texture(t_main *main, t_ray *ray)
 {
-	int wall_color;
+    int cord;
 
-	if (map[ray->ray_pos_x][ray->ray_pos_y] == '1')
-		wall_color = 0xf54242ff;
-	else
-		wall_color = 0xffffffff;
-	if (ray->side == 1)
-		wall_color /= 1.5;
-	ray->wall_color = wall_color;
+    cord = get_cardinal_side(ray);
+    if (cord == NO)
+        return (main->wall_texture[0]);
+    if (cord == SO)
+        return (main->wall_texture[1]);
+    if (cord == WE)
+        return (main->wall_texture[2]);
+    if (cord == EA)
+        return (main->wall_texture[3]);
+    return (main->wall_texture[0]);
 }
