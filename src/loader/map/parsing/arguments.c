@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:15:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/24 16:28:17 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/27 09:46:07 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	parsing_arguments(t_map *map, char **tab_file)
 			i++;
 		else if (check_arg_format(tab_file[i]))
 		{
-			ft_putstr_fd("Error, incorrect format texture\n", 2);
+			ft_putstr_fd("Error, incorrect texture\n", 2);
 			exit(1);
 		}
 		else

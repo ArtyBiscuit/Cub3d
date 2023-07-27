@@ -6,61 +6,55 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/24 15:24:29 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/27 10:54:54 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// static int	strlen_map(char **file)
-// {
-// 	int	i;
-// 	int	len;
+static char	*refile_new_line(char **template, int max_len, int i)
+{
+	int		j;
+	char	*new_line;
 
-// 	i = 8;
-// 	len = 0;
-// 	while (file[i])
-// 	{
-// 		i++;
-// 		len++;
-// 	}
-// 	return (len);
-// }
+	j = 0;
+	new_line = malloc(sizeof(char) * (max_len + 1));
+	while (template[i][j])
+	{
+		new_line[j] = template[i][j];
+		j++;
+	}
+	while (j != max_len)
+		new_line[j++] = ' ';
+	new_line[j] = '\0';
+	return (new_line);
+}
 
 static char	**reformatting_map(char **template)
 {
 	int		i;
-	int		j;
 	int		max_len;
-	char	**reformatting_map = NULL;
+	char	**new_map;
 
 	i = 0;
 	max_len = 0;
+	new_map = NULL;
 	while (template[i])
 	{
 		if ((int)ft_strlen(template[i]) > max_len)
 			max_len = ft_strlen(template[i]);
 		i++;
 	}
-	reformatting_map = malloc(sizeof(char*) * (i + 1));
+	new_map = malloc(sizeof(char *) * (i + 1));
 	i = 0;
 	while (template[i])
 	{
-		j = 0;
-		reformatting_map[i] = malloc(sizeof(char) * (max_len + 1));
-		while (template[i][j])
-		{
-			reformatting_map[i][j] = template[i][j];
-			j++;
-		}
-		while (j != max_len)
-			reformatting_map[i][j++] = ' ';
-		reformatting_map[i][j] = '\0';
+		new_map[i] = refile_new_line(template, max_len, i);
 		i++;
 	}
-	reformatting_map[i] = NULL;
+	new_map[i] = NULL;
 	free_tab(template);
-	return (reformatting_map);
+	return (new_map);
 }
 
 static int	check_plot_zero(char **file, int i, int j)
@@ -68,25 +62,24 @@ static int	check_plot_zero(char **file, int i, int j)
 	if (file[i - 1][j] && file[i - 1][j] != '1' && file[i - 1][j] != '0'
 		&& file[i - 1][j] != 'N' && file[i - 1][j] != 'S'
 		&& file[i - 1][j] != 'W' && file[i - 1][j] != 'E')
-			return (1);
+		return (1);
 	if (file[i + 1][j] && file[i + 1][j] != '1' && file[i + 1][j] != '0'
 		&& file[i + 1][j] != 'N' && file[i + 1][j] != 'S'
 		&& file[i + 1][j] != 'W' && file[i + 1][j] != 'E')
-			return (1);
+		return (1);
 	if (file[i][j - 1] && file[i][j - 1] != '1' && file[i][j - 1] != '0'
 		&& file[i][j - 1] != 'N' && file[i][j - 1] != 'S'
 		&& file[i][j - 1] != 'W' && file[i][j - 1] != 'E')
-			return (1);
+		return (1);
 	if (file[i][j + 1] && file[i][j + 1] != '1' && file[i][j + 1] != '0'
 		&& file[i][j + 1] != 'N' && file[i][j + 1] != 'S'
 		&& file[i][j + 1] != 'W' && file[i][j + 1] != 'E')
-			return (1);
+		return (1);
 	return (0);
 }
 
 static int	check_plot(char **file, int i, int j)
 {
-
 	if (file[i][j] && file[i][j] != ' ' && file[i][j] != '1'
 		&& file[i][j] != '0' && file[i][j] != 'N'
 		&& file[i][j] != 'S' && file[i][j] != 'W'
@@ -97,7 +90,7 @@ static int	check_plot(char **file, int i, int j)
 	}
 	else if (file[i][j] && file[i][j] == '0' && check_plot_zero(file, i, j))
 	{
-		ft_putstr_fd("Error, wrong map format lol\n", 2);
+		ft_putstr_fd("Error, wrong map format\n", 2);
 		exit(1);
 	}
 	return (0);
@@ -120,7 +113,7 @@ void	parsing_map(t_map *map, char **tab_file, int index)
 		while (tab_file[index][j])
 		{
 			if (tab_file[index][j] == '\n')
-				break;
+				break ;
 			check_plot(tab_file, index, j);
 			j++;
 		}

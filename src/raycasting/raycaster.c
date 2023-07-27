@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 17:22:23 by arforgea          #+#    #+#             */
-/*   Updated: 2023/07/18 10:09:58 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/27 10:23:44 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ static int	raycast(t_main *main, t_ray *ray_array)
 
 void	algo(t_main *main, t_ray *ray_array)
 {
-    raycast(main, ray_array);
+	raycast(main, ray_array);
 }
