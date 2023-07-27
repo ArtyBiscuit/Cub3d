@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:16:26 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/20 14:46:07 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/27 15:53:03 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,27 @@ int	check_arg_are_refile(t_map map)
 		|| !map.texture_east || !map.floor_color || !map.ceiling_color)
 		return (1);
 	return (0);
+}
+
+int	map_len(char **tab_file, int i)
+{
+	int	size;
+
+	size = 0;
+	while (tab_file[i])
+	{
+		if (!ft_strncmp(tab_file[i], "NO", 2)
+			|| !ft_strncmp(tab_file[i], "SO", 2)
+			|| !ft_strncmp(tab_file[i], "WE", 2)
+			|| !ft_strncmp(tab_file[i], "EA", 2)
+			|| !ft_strncmp(tab_file[i], "F", 1)
+			|| !ft_strncmp(tab_file[i], "C", 1))
+		{
+			ft_putstr_fd("Error: bad line\n", 2);
+			exit(1);
+		}
+		i++;
+		size++;
+	}
+	return (size);
 }

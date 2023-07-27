@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/27 10:54:54 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/27 16:44:36 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,13 @@ static int	check_plot(char **file, int i, int j)
 	return (0);
 }
 
-void	parsing_map(t_map *map, char **tab_file, int index)
+void	parsing_map(t_map *map, char **tab_file, int index, int size)
 {
 	int		j;
 	int		k;
 
 	k = 0;
+	map->format_map = malloc(sizeof(char *) * size + 1);
 	while (tab_file[index])
 	{
 		j = 0;
@@ -117,9 +118,7 @@ void	parsing_map(t_map *map, char **tab_file, int index)
 			check_plot(tab_file, index, j);
 			j++;
 		}
-		map->format_map[k] = tab_file[index];
-		index++;
-		k++;
+		map->format_map[k++] = tab_file[index++];
 	}
 	map->format_map[k] = NULL;
 	map->format_map = reformatting_map(map->format_map);

@@ -30,6 +30,7 @@ SRC = src/main.c									\
 	  src/loader/texture/load_texture.c				\
 	  src/loader/map/parsing/arguments.c			\
 	  src/loader/map/parsing/check_file.c			\
+	  src/loader/map/parsing/format.c				\
 	  src/loader/map/parsing/map.c					\
 	  src/loader/map/parsing/parsing.c				\
 	  src/loader/map/parsing/utils.c				\

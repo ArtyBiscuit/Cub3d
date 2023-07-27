@@ -48,7 +48,7 @@ int		init_values(t_main *main);
 //	src/loader/map/parsing
 int	    parsing_arguments(t_map *map, char **tab_file);
 void	check_arguments(int argc, char **argv);
-void	parsing_map(t_map *map, char **tab_file, int index);
+void	parsing_map(t_map *map, char **tab_file, int index, int size);
 int	    check_arg_format(char *arg);
 int	    map_len(char **tab_file, int i);
 void	parsing_map_arg(t_map *map, char *file);

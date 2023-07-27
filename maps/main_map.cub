@@ -3,7 +3,7 @@ SO ./src/texture/214.png
 WE ./src/texture/215.png
 EA ./src/texture/216.png
 
-F 220,100,0/
+F 220,100,0
 C 225,30,0
 
 11111111111111111111111111111111111111111
