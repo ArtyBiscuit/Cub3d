@@ -11,27 +11,6 @@
 /* ************************************************************************** */
 #include "../../../inc/cub3d.h"
 
-int set_fog(int hex_color, float dist, int fog_color)
-{
-    int red;
-    int green;
-    int blue;
-
-    red = (hex_color >> 24) & fog_color;
-    green = (hex_color >> 16) & fog_color;
-    blue = (hex_color >> 8) & fog_color;
-    if (dist > 1)
-        dist = 1;
-    if (dist < 0.1)
-        dist = 0.1;
-    red = red * (1 - dist);
-    green = green * (1 - dist);
-    blue = blue * (1 - dist);
-
-
-    return (rgba_to_hex(red, green, blue, 255));
-}
-
 int get_start(t_wall_line *line)
 {
     int start;
@@ -80,7 +59,7 @@ void    draw_wall_line(t_main *main, t_wall_line *line)
             y = get_y_pixel(start, *line);
             color = line->texture->pixels[x + y * line->texture->size_y];
             if (1 == 1)
-                color = set_fog(color, fog_dist, 0xFF);
+                color = set_wall_fog(color, fog_dist, 0xFF);
             mlx_put_pixel(main->mlx_data.img, line->ray->ray_id, start, color);
         }
         start++;

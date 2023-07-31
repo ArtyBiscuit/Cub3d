@@ -66,9 +66,10 @@ void	algo(t_main *main, t_ray *ray_array);
 //	src/raycasting/fisheye
 float	get_ray_min_dist(t_ray ray);
 //	src/renderer
-int     set_fog(int hex_color, float dist, int fog_color);
-void    draw_floor(t_main *main, unsigned int color);
-void    draw_ceiling(t_main *main, unsigned int color);
+int     set_wall_fog(int hex_color, float dist, int fog_color);
+int     set_back_fog(int hex_color, float dist, int fog_color);
+void    draw_ceiling(t_main *main, int color);
+void    draw_floor(t_main *main, int color);
 void    render(t_main *main, t_ray *ray_array);
 //	src/minimap
 void	minimap(t_main *main, int pos_x, int pos_y, float zoom);

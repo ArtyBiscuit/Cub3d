@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:53:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/07/18 10:09:22 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/31 15:53:21 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	init_values(t_main *main)
 	parsing_map_arg(&main->map, "maps/main_map.cub");
 	main->map.size_x = get_map_size_x(main->map.format_map);
 	main->map.size_y = get_map_size_y(main->map.format_map);
+	for(int i = 0; main->map.format_map[i]; i++)
+		printf("%s", main->map.format_map[i]);
 
 
 	//wall_textur

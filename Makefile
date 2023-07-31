@@ -9,7 +9,7 @@ OBJ_DIR = obj
 LIBX_DIR = lib/minilibx
 LIBFT_DIR	= lib/libft
 CC = clang
-CFLAGS = -Wall -Werror -Wextra -g3
+CFLAGS = -g3
 INC = -Iinclude -Iinc
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 MAKE_LIBFT = $(LIBFT_DIR)/libft.a
@@ -30,10 +30,10 @@ SRC = src/main.c									\
 	  src/loader/texture/load_texture.c				\
 	  src/loader/map/parsing/arguments.c			\
 	  src/loader/map/parsing/check_file.c			\
-	  src/loader/map/parsing/format.c				\
 	  src/loader/map/parsing/map.c					\
 	  src/loader/map/parsing/parsing.c				\
 	  src/loader/map/parsing/utils.c				\
+	  src/loader/map/parsing/format.c				\
 	  src/raycasting/fisheye/get_ray_min_dist.c		\
 	  src/raycasting/check_infinite_value.c			\
 	  src/raycasting/get_rey_side.c					\
@@ -50,6 +50,8 @@ SRC = src/main.c									\
 	  src/renderer/player/player_swing.c			\
 	  src/renderer/player/crosshair.c				\
 	  src/renderer/minimap/minimap.c				\
+	  src/renderer/fog/wall_fog.c					\
+	  src/renderer/fog/back_fog.c					\
 	  src/utils/coordinates/get_cardinal_points.c	\
 	  src/utils/rad_converter.c						\
 	  src/utils/free/free_all.c						\

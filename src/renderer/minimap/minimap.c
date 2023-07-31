@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:18:59 by arforgea          #+#    #+#             */
-/*   Updated: 2023/07/18 10:12:01 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/31 15:49:55 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	minimap(t_main *main, int pos_x, int pos_y, float zoom)
 						mlx_put_pixel(main->mlx_data.img, i + pos_x - MINIMAP_SIZE, j + pos_y - MINIMAP_SIZE, 0xe0e0e0ff);
 					if (i == MINIMAP_SIZE - 3 && j == MINIMAP_SIZE)
 						mlx_put_pixel(main->mlx_data.img, i + pos_x - MINIMAP_SIZE, j + pos_y - MINIMAP_SIZE, 0xff0000ff);
-				}	
+				}
 			}
 			j++;
 		}

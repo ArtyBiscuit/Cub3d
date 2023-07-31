@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:15:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/27 16:49:13 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/07/27 18:36:34 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*get_texture(char *line)
 	return (wall_texture);
 }
 
-static int	*get_floor_ceiling_texture(char *line)
+static int	get_floor_ceiling_texture(char *line)
 {
 	int		i;
 	int		j;
@@ -45,10 +45,11 @@ static int	*get_floor_ceiling_texture(char *line)
 		j = i;
 		while (line[i] != ',')
 			i++;
-		tab_rgb[count] = ft_atoi(ft_substr(line, j, ((i - j) - 1)));
+		tab_rgb[count] = ft_atoi(ft_substr(line, j, (i - j)));
+		i++;
 		count++;
 	}
-	return (tab_rgb);
+	return (rgba_to_hex(tab_rgb[0], tab_rgb[1], tab_rgb[2], 255));
 }
 
 static void	refile_textures(t_map *map, char *line)
