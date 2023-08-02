@@ -49,6 +49,7 @@ SRC = src/main.c									\
 	  src/renderer/weapon/mouv_weapon.c				\
 	  src/renderer/player/player_swing.c			\
 	  src/renderer/player/crosshair.c				\
+	  src/renderer/sprite/proto.c					\
 	  src/renderer/minimap/minimap.c				\
 	  src/renderer/fog/wall_fog.c					\
 	  src/renderer/fog/back_fog.c					\

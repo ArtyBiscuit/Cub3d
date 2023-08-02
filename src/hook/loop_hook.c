@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 17:31:46 by arforgea          #+#    #+#             */
-/*   Updated: 2023/06/30 17:21:55 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/01 17:33:51 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../inc/cub3d.h"
+
+#include "cub3d.h"
 // Print the window width and height.
 void	game_fps(t_main *main)
 {
 	main->frame_old_time = main->frame_curent_time;
 	main->frame_curent_time = mlx_get_time();
-	printf("\e[1A\e[2KFPS: %2.f\n", 1.0 / (main->frame_curent_time - main->frame_old_time));
+	//printf("\e[1A\e[2KFPS: %2.f\n", 1.0 / (main->frame_curent_time - main->frame_old_time));
 }
 
 void loop_hook(void* param)

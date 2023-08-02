@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 17:27:04 by arforgea          #+#    #+#             */
-/*   Updated: 2023/07/31 16:04:20 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/02 09:23:20 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ void	perform_dda(char **map, t_ray *ray)
 			hit = 1;
 			return ;
 		}
+		// if (map[ray->ray_pos_y][ray->ray_pos_x] == '2')
+		// {
+
+		// }
 		increment_delta(ray);
 	}
 }

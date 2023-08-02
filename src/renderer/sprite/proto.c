@@ -1,37 +1,46 @@
 #include "../../../inc/cub3d.h"
 
-void sprit(t_main *main ,t_texture *sprite, float x, float y)
+void sprite(t_main *main)
 {
-    float sprite_dist;
-    float sprite_x;
-    float sprite_y;
+    int     color;
+    float   a;
+    float   b;
+    float   CS;
+    float   SN;
+    float   sp_x;
+    float   sp_y;
+    float   sp_z;
 
-    sprite_dist = ((main->player.pos_x - x) * (main->player.pos_x - x) + (main->player.pos_y - y) * (main->player.pos_y - y));
-    sprite_x = x - main->player.pos_x;
-    sprite_y = y - main->player.pos_y;
+    sp_x = main->sprite[0].x - main->player.pos_x;
+    sp_y = main->sprite[0].y - main->player.pos_y;
+    sp_z = main->sprite[0].z;
 
-    // calcule la hauteur du sprite à l'écran
-    int spriteHeight = abs((int)(HEIGHT / (sprite_dist))); //l'utilisation de 'transformY' au lieu de la distance réelle empêche le fisheye
-    //calcule le pixel le plus bas et le plus haut pour remplir la bande actuelle
-    int drawStartY = -spriteHeight / 2 + HEIGHT / 2;
-    if(drawStartY < 0) drawStartY = 0 ;
-    int drawEndY = spriteHeight / 2 + HEIGHT / 2;
-    if(drawEndY >= HEIGHT) drawEndY = HEIGHT - 1;
+    float rota = atan2(main->player.dir_y, main->player.dir_x);
+    if (rota < 0)
+        rota += 2 * PI;
+    CS = cos(-rota);
+    SN = sin(-rota);
 
-    // calcule la largeur du sprite
-    int spriteWidth = abs((int)(WIDTH / (sprite_dist)));
-    int drawStartX = -spriteWidth / 2;
-    if(drawStartX < 0) drawStartX = 0 ;
-    int drawEndX = spriteWidth / 2;
-    if(drawEndX >= WIDTH) drawEndX = WIDTH - 1;
+    a = (sp_y * CS) + (sp_x * SN);
+    b = (sp_x * CS) - (sp_y * SN);
 
-    int color;
-    for (int i = drawStartY; i < drawEndY; i++)
+    sp_x = a;
+    sp_y = b;
+
+    sp_x = (sp_x * 600 / sp_y) + (WIDTH / 2);
+    sp_z = (sp_z * 600 / sp_y) + (HEIGHT / 2) + main->player.view;
+
+    color = rgba_to_hex(0, 247, 66, 255);
+    if (sp_x > 0 && sp_x < main->mlx_data.img->width && sp_z > 0 && sp_z < main->mlx_data.img->height)
     {
-        for (int j = drawStartX; j < drawEndX; j++)
-        {
-             color = sprite->pixels[j + i * sprite->size_x];
-             mlx_put_pixel(main->mlx_data.mlx, i, j, color);
-        }
+        mlx_put_pixel(main->mlx_data.img, sp_x, sp_z, color);
+        mlx_put_pixel(main->mlx_data.img, sp_x + 1, sp_z, color);
+        mlx_put_pixel(main->mlx_data.img, sp_x, sp_z + 1, color);
+        mlx_put_pixel(main->mlx_data.img, sp_x + 1, sp_z + 1, color);
+        mlx_put_pixel(main->mlx_data.img, sp_x + 2, sp_z, color);
+        mlx_put_pixel(main->mlx_data.img, sp_x, sp_z + 2, color);
+        mlx_put_pixel(main->mlx_data.img, sp_x + 2, sp_z + 1, color);
+        mlx_put_pixel(main->mlx_data.img, sp_x + 1, sp_z + 2, color);
+        mlx_put_pixel(main->mlx_data.img, sp_x + 2, sp_z + 2, color);
     }
 }

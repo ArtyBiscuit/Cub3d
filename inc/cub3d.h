@@ -55,7 +55,6 @@ void	parsing_map_arg(t_map *map, char *file);
 int	    is_space(char c);
 int	    is_upper_case(char c);
 int	    check_arg_are_refile(t_map map);
-
 //	src/loader/textur
 void    load_sprite(t_main *main);
 //	src/raycasting
@@ -71,7 +70,7 @@ int     set_back_fog(int hex_color, float dist, int fog_color);
 void    draw_ceiling(t_main *main, int color);
 void    draw_floor(t_main *main, int color);
 void    render(t_main *main, t_ray *ray_array);
-//	src/minimap
+//	src/renderer/minimap
 void	minimap(t_main *main, int pos_x, int pos_y, float zoom);
 //	src/renderer/wall
 void	draw_wall(t_main *main, t_ray *ray_array);
@@ -81,6 +80,8 @@ t_texture *get_wall_texture(t_main *main, t_ray *ray);
 //	src/renderer/player
 void	player_rotate(t_main *main, float theta);
 void    crosshair(t_main *main);
+//	src/renderer/sprite
+void 	sprite(t_main *main);
 //	src/utils
 float	    rad_converter(float radian);
 float	    deg_converter(float degree);

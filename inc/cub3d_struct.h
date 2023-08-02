@@ -67,6 +67,16 @@ typedef struct	s_texture
 	int	size_y;
 }				t_texture;
 
+typedef struct	s_sprite
+{
+	int		type;
+	int		state;
+	int		map;
+	float	x;
+	float	y;
+	float	z;
+}				t_sprite;
+
 typedef struct	s_wall_line
 {
 	t_texture	*texture;
@@ -86,8 +96,6 @@ typedef struct	s_key
 	int	esc;
 }				t_key;
 
-
-
 typedef struct	s_main
 {
 	t_mlx_data	mlx_data;
@@ -97,6 +105,7 @@ typedef struct	s_main
 	t_player	player;
 	t_ray		*ray_array;
 	t_texture	**wall_texture;
+	t_sprite	*sprite;
 	float		frame_curent_time;
 	float		frame_old_time;
 }				t_main;
