@@ -6,52 +6,11 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:53:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/02 10:14:44 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/07 10:21:41 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// int **get_map(void)
-// {
-
-// 	int **mappemonde = malloc(sizeof(int *) * 24);
-// 	for (int i = 0; i < 24; i++)
-// 		mappemonde[i] = malloc(sizeof(int) * 24);
-// 	int mappemonde2[24][24]=
-// 	{
-// 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-// 		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-// 		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
-// 		{1,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
-// 		{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
-// 		{1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
-// 		{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-// 	};
-// 	for (int i = 0; i < 24; i++){
-// 		for(int j = 0; j < 24; j++){
-// 			mappemonde[i][j] = mappemonde2[i][j];
-// 		}
-// 	}
-// 	return(mappemonde);
-// }
 
 int	init_values(t_main *main)
 {
@@ -93,7 +52,7 @@ int	init_values(t_main *main)
 	main->map.size_x = get_map_size_x(main->map.format_map);
 	main->map.size_y = get_map_size_y(main->map.format_map);
 
-	//wall_textur
+	//wall_textures
 	main->wall_texture = malloc(sizeof(t_texture) * 4);
 	main->wall_texture[0] = img_to_struct(mlx_texture_to_image(main->mlx_data.mlx, mlx_load_png(main->map.texture_north)));
 	main->wall_texture[1] = img_to_struct(mlx_texture_to_image(main->mlx_data.mlx, mlx_load_png(main->map.texture_south)));
@@ -104,10 +63,10 @@ int	init_values(t_main *main)
 	main->sprite = malloc(sizeof(t_sprite));
 	main->sprite[0].type = 1;
 	main->sprite[0].state = 1;
-	main->sprite[0].map = 0;
+	main->sprite[0].texture = img_to_struct(mlx_texture_to_image(main->mlx_data.mlx, mlx_load_png("./src/texture/mguard_shoot1.png")));
 	main->sprite[0].x = 20.5f;
 	main->sprite[0].y = 12.5f;
-	main->sprite[0].z = 2;
+	main->sprite[0].z = -0.5f;
 
 	return (0);
 }

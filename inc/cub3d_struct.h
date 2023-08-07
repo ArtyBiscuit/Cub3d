@@ -69,12 +69,12 @@ typedef struct	s_texture
 
 typedef struct	s_sprite
 {
-	int		type;
-	int		state;
-	int		map;
-	float	x;
-	float	y;
-	float	z;
+	int			type;
+	int			state;
+	float		x;
+	float		y;
+	float		z;
+	t_texture	*texture;
 }				t_sprite;
 
 typedef struct	s_wall_line

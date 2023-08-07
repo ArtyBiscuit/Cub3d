@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall_ling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 17:13:25 by arforgea          #+#    #+#             */
-/*   Updated: 2023/06/29 17:13:39 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/07 10:29:14 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../../inc/cub3d.h"
+
+#include "cub3d.h"
 
 int get_start(t_wall_line *line)
 {

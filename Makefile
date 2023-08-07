@@ -1,22 +1,43 @@
-_END="\033[0m"
-_RED="\033[0;31m"
-_GREEN="\033[0;32m"
-_YELLOW="\033[0;33m"
-_CYAN="\033[0;36m"
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/08/07 10:04:45 by axcallet          #+#    #+#              #
+#    Updated: 2023/08/07 16:17:52 by axcallet         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRC_DIR = src
-OBJ_DIR = obj
-LIBX_DIR = lib/minilibx
+########## COLORS ##########
+
+_END		="\033[0m"
+_RED		="\033[0;31m"
+_GREEN		="\033[0;32m"
+_YELLOW		="\033[0;33m"
+_CYAN		="\033[0;36m"
+
+########## ARGUMENTS ##########
+
+NAME		= cub3d
+CC			= clang
+CFLAGS		= -Wall -Werror -Wextra -g3
+
+########## SOURCES ##########
+
+SRC_DIR		= src
+OBJ_DIR		= obj
+LIBX_DIR	= lib/minilibx
 LIBFT_DIR	= lib/libft
-CC = clang
-CFLAGS = -g3
-INC = -Iinclude -Iinc
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-MAKE_LIBFT = $(LIBFT_DIR)/libft.a
-MAKE_LIBX = $(LIBX_DIR)/build/libmlx42.a
-LIB =  $(MAKE_LIBFT) $(MAKE_LIBX) -ldl -lglfw -pthread -lm
+INC			= -Iinclude -Iinc
+OBJ			= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+MAKE_LIBFT	= $(LIBFT_DIR)/libft.a
+MAKE_LIBX	= $(LIBX_DIR)/build/libmlx42.a
+LIB			= $(MAKE_LIBFT) $(MAKE_LIBX) -ldl -lglfw -pthread -lm
 
 ################## SRC ###################
+
 SRC = src/main.c									\
 	  src/collider/check_collider.c					\
 	  src/hook/key_hook.c							\
@@ -60,34 +81,46 @@ SRC = src/main.c									\
 	  src/utils/img_to_struct.c						\
 	  src/utils/rgba_to_hex.c						\
 	  src/utils/cmp_tab.c
-##########################################
-NAME = cub3d
+
+########## RULES ##########
 
 all: $(NAME)
 
 $(NAME): $(MAKE_LIBX) $(MAKE_LIBFT) $(OBJ_DIR) $(OBJ)
-	@echo $(_GREEN)Compiling $(OBJ)...$(END)
+	@echo $(_GREEN)- Compiling src$(END)
 	@$(CC) $(CFLAGS) $(OBJ) -o $@ $(LIB)
+
 $(MAKE_LIBX):
-	@cmake $(LIBX_DIR) -B $(LIBX_DIR)/build && make -C $(LIBX_DIR)/build -j4
+	@cmake $(LIBX_DIR) -B $(LIBX_DIR)/build > /dev/null && make -C $(LIBX_DIR)/build -j4 > /dev/null
 
 $(MAKE_LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 $(OBJ_DIR):
+	@echo ''
+	@echo $(_RED)'                  __           __       __'
+	@echo '                 /\ \        / __ \    /\ \'
+	@echo '  ___    __  __  \ \ \____  /\_\L\ \   \_\ \'
+	@echo ' / ___\ /\ \/\ \  \ \  __ \ \/_/_\_<_  / _  \'
+	@echo '/\ \__/ \ \ \_\ \  \ \ \L\ \  /\ \L\ \/\ \L\ \'
+	@echo '\ \____\ \ \____/   \ \____/  \ \____/\ \_____\'
+	@echo ' \/____/  \/___/     \/___/    \/___/  \/____ /'
+	@echo '               By Axel && Arty'$(END)
+	@echo ''
 	@mkdir -p $@
+	@echo $(_CYAN)- Create obj directory
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	mkdir -p $(@D)
-	@echo $(_CYAN)Compiling $<...$(END)
+	@mkdir -p $(@D)
 	@$(CC) -o $@ -c $< $(CFLAGS) $(INC)
 
 clean:
-	@echo $(_YELLOW)Cleaning $(OBJ)...$(END)
+	@echo $(_YELLOW)- Cleaning obj directory$(END)
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@echo $(_RED)Cleaning $(NAME)...$(END)
+	@echo $(_RED)- Cleaning executable$(END)
+	@echo $(_RED)- Cleaning minilibx build directory$(END)
 	@rm -f $(NAME)
 	@rm -rf $(LIBX_DIR)/build
 
