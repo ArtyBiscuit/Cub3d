@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 18:24:39 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/23 10:36:32 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/23 11:27:23 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "cub3d.h"
 
 static void	ft_error(void)
 {
@@ -18,10 +18,30 @@ static void	ft_error(void)
 	exit(EXIT_FAILURE);
 }
 
-int32_t	main(void)
+static void	check_input(int argc, char **argv)
+{
+	if (argc != 2)
+	{
+		ft_putstr_fd("Wrong number of arguments\n", 2);
+		exit(1);
+	}
+	if (!ft_strncmp(argv[1], ".cub", ft_strlen(argv[1]) - 4))
+	{
+		ft_putstr_fd("Wrong file extension\n", 2);
+		exit(1);
+	}
+	if (open(argv[1]) < 0)
+	{
+		ft_putstr_fd("Cannot open the file\n", 2);
+		exit(1);
+	}
+}
+
+int32_t	main(int argc, char **argv)
 {
 	t_main		main;
 
+	check_input(argc, argv);
 	main.mlx_data.mlx = mlx_init(WIDTH, HEIGHT, "cub3d", false);
 	if (!main.mlx_data.mlx)
 		ft_error();
