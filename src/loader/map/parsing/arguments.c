@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arguments.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:15:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/27 18:36:34 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/23 11:30:52 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int	get_floor_ceiling_texture(char *line)
 	int		j;
 	int		count;
 	int		*tab_rgb;
+	int		hex;
 
 	i = 1;
 	count = 0;
@@ -49,7 +50,9 @@ static int	get_floor_ceiling_texture(char *line)
 		i++;
 		count++;
 	}
-	return (rgba_to_hex(tab_rgb[0], tab_rgb[1], tab_rgb[2], 255));
+	hex = rgba_to_hex(tab_rgb[0], tab_rgb[1], tab_rgb[2], 255);
+	free(tab_rgb);
+	return (hex);
 }
 
 static void	refile_textures(t_map *map, char *line)
