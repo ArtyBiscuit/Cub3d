@@ -1,8 +1,0 @@
-# config vscode
-.vscode
-
-# binary file
-cub3d
-
-# annoying nfs file
-.nfs*

@@ -1,3 +1,0 @@
-/nfs/homes/arforgea/Documents/_cursus/Cub3d/build/CMakeFiles/rebuild_cache.dir
-/nfs/homes/arforgea/Documents/_cursus/Cub3d/build/CMakeFiles/edit_cache.dir
-/nfs/homes/arforgea/Documents/_cursus/Cub3d/build/CMakeFiles/mlx42.dir
