@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_applied.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 18:31:51 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/20 18:33:56 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:37:38 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	key_applied(t_main *main)
 	float	speed;
 
 	speed = main->parameter.speed;
-	if (main->key.W)
+	if (main->key.w)
 		player_movement_forward(main, speed);
-	if (main->key.S)
+	if (main->key.s)
 		player_movement_back(main, speed);
-	if (main->key.D)
+	if (main->key.d)
 		player_movement_right(main, speed);
-	if (main->key.A)
+	if (main->key.a)
 		player_movement_left(main, speed);
 	if (main->key.left)
 		player_rotate(main, -0.1 * main->parameter.sensitivity);

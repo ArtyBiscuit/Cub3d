@@ -1,13 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d_struct.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/24 18:33:04 by axcallet          #+#    #+#             */
+/*   Updated: 2023/08/24 18:36:21 by axcallet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_STRUCT_H
 # define CUB3D_STRUCT_H
 
-typedef struct	s_mlx_data
+/***************  INCLUDES  ****************/
+
+# include "cub3d.h"
+
+/***************  STRUCTURES  ****************/
+
+typedef struct s_mlx_data
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 }				t_mlx_data;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char	**format_map;
 	char	*texture_north;
@@ -20,7 +38,7 @@ typedef struct	s_map
 	int		size_y;
 }				t_map;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	float	pos_x;
 	float	pos_y;
@@ -33,7 +51,7 @@ typedef struct	s_player
 	float	theta;
 }				t_player;
 
-typedef struct	s_parameter
+typedef struct s_parameter
 {
 	int		crossshair_size;
 	int		crossshair_color;
@@ -42,7 +60,7 @@ typedef struct	s_parameter
 	float	fov;
 }				t_parameter;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	float	pl;
 	float	ray_dir_x;
@@ -61,14 +79,14 @@ typedef struct	s_ray
 	int		wall_side;
 }			t_ray;
 
-typedef struct	s_texture
+typedef struct s_texture
 {
 	int	*pixels;
 	int	size_x;
 	int	size_y;
 }				t_texture;
 
-typedef struct	s_sprite
+typedef struct s_sprite
 {
 	int			type;
 	int			state;
@@ -78,7 +96,7 @@ typedef struct	s_sprite
 	t_texture	*texture;
 }				t_sprite;
 
-typedef struct	s_wall_line
+typedef struct s_wall_line
 {
 	t_texture	*texture;
 	float		line_dist;
@@ -88,17 +106,17 @@ typedef struct	s_wall_line
 	t_ray		*ray;
 }				t_wall_line;
 
-typedef struct	s_key
+typedef struct s_key
 {
-	int	W;
-	int	A;
-	int	S;
-	int	D;
+	int	w;
+	int	a;
+	int	s;
+	int	d;
 	int	left;
-	int right;
+	int	right;
 }				t_key;
 
-typedef struct	s_main
+typedef struct s_main
 {
 	t_mlx_data	mlx_data;
 	t_map		map;
@@ -110,4 +128,5 @@ typedef struct	s_main
 	float		frame_curent_time;
 	float		frame_old_time;
 }				t_main;
+
 #endif

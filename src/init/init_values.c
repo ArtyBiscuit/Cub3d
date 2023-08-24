@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_values.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:53:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/24 18:25:34 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:36:09 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ static void	init_player_valus(t_main *main)
 static void	set_default_key_valus(t_main *main)
 {
 	printf("STATUS:\tInit Key Valus...\n");
-	main->key.W = 0;
-	main->key.A = 0;
-	main->key.S = 0;
-	main->key.D = 0;
+	main->key.w = 0;
+	main->key.a = 0;
+	main->key.s = 0;
+	main->key.d = 0;
 	main->key.left = 0;
 	main->key.right = 0;
 }
