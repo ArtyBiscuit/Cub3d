@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:53:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/24 17:09:13 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:17:27 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	init_parameter(t_main *main)
 {
-	printf("INIT:\tParameter...\n");
 	main->parameter.speed = 0.1;
 	main->parameter.fov = 90.0f;
 	main->parameter.crossshair_size = 5;
