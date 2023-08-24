@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_floor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:03:16 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/20 19:32:59 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:29:03 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "cub3d.h"
 
 void	draw_floor(t_main *main, int color)
 {

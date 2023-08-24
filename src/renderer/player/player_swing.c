@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   player_swing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:31:24 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/20 19:07:38 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:27:56 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/cub3d.h"
+#include "cub3d.h"
 
 void	player_rotate(t_main *main, float theta)
 {

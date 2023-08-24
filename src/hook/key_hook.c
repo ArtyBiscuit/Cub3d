@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 17:31:49 by arforgea          #+#    #+#             */
-/*   Updated: 2023/06/30 13:10:04 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:04:48 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../inc/cub3d.h"
-#include <stdio.h>
+
+#include "cub3d.h"
 
 void	key_hook(mlx_key_data_t keydata, void *param)
 {

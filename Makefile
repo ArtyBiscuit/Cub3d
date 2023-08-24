@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+         #
+#    By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/07 10:04:45 by axcallet          #+#    #+#              #
-#    Updated: 2023/08/23 08:57:23 by arforgea         ###   ########.fr        #
+#    Updated: 2023/08/24 17:32:44 by axcallet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,6 @@ SRC = src/main.c									\
 	  src/utils/coordinates/get_cardinal_points.c	\
 	  src/utils/rad_converter.c						\
 	  src/utils/free/free_all.c						\
-	  src/utils/free/free_ray_array.c				\
 	  src/utils/img_to_struct.c						\
 	  src/utils/rgba_to_hex.c						\
 	  src/utils/cmp_tab.c

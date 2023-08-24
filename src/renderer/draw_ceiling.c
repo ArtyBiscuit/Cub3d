@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ceiling.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:03:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/20 19:35:01 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:28:56 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "cub3d.h"
 
 void	draw_ceiling(t_main *main, int color)
 {

@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   load_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 21:30:21 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/23 11:36:55 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:50:48 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	free_img(t_main *main, mlx_image_t **img, mlx_texture_t **texture)
+{
+	mlx_delete_image(main->mlx_data.mlx, img[0]);
+	mlx_delete_image(main->mlx_data.mlx, img[1]);
+	mlx_delete_image(main->mlx_data.mlx, img[2]);
+	mlx_delete_image(main->mlx_data.mlx, img[3]);
+	mlx_delete_texture(texture[0]);
+	mlx_delete_texture(texture[1]);
+	mlx_delete_texture(texture[2]);
+	mlx_delete_texture(texture[3]);
+	free(img);
+	free(texture);
+}
 
 void	load_wall_texture(t_main *main)
 {
@@ -32,14 +46,5 @@ void	load_wall_texture(t_main *main)
 	main->wall_texture[1] = img_to_struct(img_tmp[1]);
 	main->wall_texture[2] = img_to_struct(img_tmp[2]);
 	main->wall_texture[3] = img_to_struct(img_tmp[3]);
-	mlx_delete_image(main->mlx_data.mlx, img_tmp[0]);
-	mlx_delete_image(main->mlx_data.mlx, img_tmp[1]);
-	mlx_delete_image(main->mlx_data.mlx, img_tmp[2]);
-	mlx_delete_image(main->mlx_data.mlx, img_tmp[3]);
-	mlx_delete_texture(texture_tmp[0]);
-	mlx_delete_texture(texture_tmp[1]);
-	mlx_delete_texture(texture_tmp[2]);
-	mlx_delete_texture(texture_tmp[3]);
-	free(img_tmp);
-	free(texture_tmp);
+	free_img(main, img_tmp, texture_tmp);
 }

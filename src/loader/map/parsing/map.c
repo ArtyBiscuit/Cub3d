@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/24 11:29:11 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:40:51 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int	check_plot(char **file, int index, int j)
 	return (0);
 }
 
-void	check_map(t_main *main, char **tab_file, int i)
+static void	check_map(t_main *main, char **tab_file, int i)
 {
 	int	j;
 

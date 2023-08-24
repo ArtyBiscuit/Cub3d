@@ -6,13 +6,13 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 17:13:25 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/20 19:43:33 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:27:31 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	get_start(t_wall_line *line)
+static int	get_start(t_wall_line *line)
 {
 	int	start;
 
@@ -23,7 +23,7 @@ int	get_start(t_wall_line *line)
 	return (start);
 }
 
-int	get_end(t_wall_line *line)
+static int	get_end(t_wall_line *line)
 {
 	int	end;
 
@@ -34,7 +34,7 @@ int	get_end(t_wall_line *line)
 	return (end);
 }
 
-int	get_y_pixel(int start, t_wall_line line)
+static int	get_y_pixel(int start, t_wall_line line)
 {
 	float	a;
 

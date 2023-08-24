@@ -6,13 +6,13 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:53:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/23 11:52:03 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:09:13 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_parameter(t_main *main)
+static void	init_parameter(t_main *main)
 {
 	printf("INIT:\tParameter...\n");
 	main->parameter.speed = 0.1;
@@ -22,7 +22,7 @@ void	init_parameter(t_main *main)
 	main->parameter.sensitivity = 1.0f;
 }
 
-void	init_player_valus(t_main *main)
+static void	init_player_valus(t_main *main)
 {
 	main->player.dir_x = 1;
 	main->player.dir_y = 0;
@@ -34,7 +34,7 @@ void	init_player_valus(t_main *main)
 	main->player.view = 0;
 }
 
-void	set_default_key_valus(t_main *main)
+static void	set_default_key_valus(t_main *main)
 {
 	main->key.W = 0;
 	main->key.A = 0;
@@ -44,7 +44,7 @@ void	set_default_key_valus(t_main *main)
 	main->key.right = 0;
 }
 
-void	init_map_valus(t_main *main, char *file_path)
+static void	init_map_valus(t_main *main, char *file_path)
 {
 	main->map.texture_north = NULL;
 	main->map.texture_south = NULL;
