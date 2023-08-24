@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_values.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:53:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/24 18:17:27 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:25:34 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	init_parameter(t_main *main)
 {
+	printf("STATUS:\tInit Parameter...\n");
 	main->parameter.speed = 0.1;
 	main->parameter.fov = 90.0f;
 	main->parameter.crossshair_size = 5;
@@ -23,6 +24,7 @@ static void	init_parameter(t_main *main)
 
 static void	init_player_valus(t_main *main)
 {
+	printf("STATUS:\tInit Player Valus...\n");
 	main->player.dir_x = 1;
 	main->player.dir_y = 0;
 	main->player.pos_x = 0.0;
@@ -35,6 +37,7 @@ static void	init_player_valus(t_main *main)
 
 static void	set_default_key_valus(t_main *main)
 {
+	printf("STATUS:\tInit Key Valus...\n");
 	main->key.W = 0;
 	main->key.A = 0;
 	main->key.S = 0;
@@ -45,6 +48,7 @@ static void	set_default_key_valus(t_main *main)
 
 static void	init_map_valus(t_main *main, char *file_path)
 {
+	printf("STATUS:\tInit Map Valus...\n");
 	main->map.texture_north = NULL;
 	main->map.texture_south = NULL;
 	main->map.texture_east = NULL;
@@ -67,5 +71,6 @@ int	init_values(t_main *main, char *file_path)
 	set_default_key_valus(main);
 	init_map_valus(main, file_path);
 	load_wall_texture(main);
+	printf("STATUS:\tCompleted !\n");
 	return (0);
 }

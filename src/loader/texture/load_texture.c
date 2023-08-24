@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 21:30:21 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/24 17:50:48 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:26:03 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	load_wall_texture(t_main *main)
 	mlx_image_t		**img_tmp;
 	mlx_texture_t	**texture_tmp;
 
+	printf("STATUS:\tLoad Texture...\n");
 	main->wall_texture = malloc(sizeof(t_texture) * 4);
 	img_tmp = malloc(sizeof(mlx_image_t) * 4);
 	texture_tmp = malloc(sizeof(mlx_texture_t) * 4);
