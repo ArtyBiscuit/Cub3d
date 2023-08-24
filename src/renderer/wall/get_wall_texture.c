@@ -6,7 +6,7 @@
 /*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 17:14:05 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/20 19:38:40 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:22:14 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ t_texture	*get_wall_texture(t_main *main, t_ray *ray)
 	if (cord == SO)
 		return (main->wall_texture[1]);
 	if (cord == WE)
-		return (main->wall_texture[2]);
-	if (cord == EA)
 		return (main->wall_texture[3]);
+	if (cord == EA)
+		return (main->wall_texture[2]);
 	return (main->wall_texture[0]);
 }
