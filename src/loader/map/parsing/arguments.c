@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arguments.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:15:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/23 11:30:52 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:29:34 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static char	*get_texture(char *line)
 	return (wall_texture);
 }
 
-static int	get_floor_ceiling_texture(char *line)
+static int	*refile_tab_color(char *line)
 {
 	int		i;
 	int		j;
 	int		count;
 	int		*tab_rgb;
-	int		hex;
+	char	*tmp;
 
 	i = 1;
 	count = 0;
@@ -44,12 +44,23 @@ static int	get_floor_ceiling_texture(char *line)
 	while (count != 3)
 	{
 		j = i;
-		while (line[i] != ',')
+		while (line[i] && line[i] != ',')
 			i++;
-		tab_rgb[count] = ft_atoi(ft_substr(line, j, (i - j)));
+		tmp = ft_substr(line, j, (i - j));
+		tab_rgb[count] = ft_atoi(tmp);
+		free(tmp);
 		i++;
 		count++;
 	}
+	return (tab_rgb);
+}
+
+static int	get_floor_ceiling_color(char *line)
+{
+	int	hex;
+	int	*tab_rgb;
+
+	tab_rgb = refile_tab_color(line);
 	hex = rgba_to_hex(tab_rgb[0], tab_rgb[1], tab_rgb[2], 255);
 	free(tab_rgb);
 	return (hex);
@@ -71,9 +82,9 @@ static void	refile_textures(t_map *map, char *line)
 	else if (!ft_strncmp(line, "EA ", 3) && !map->texture_east)
 		map->texture_east = get_texture(&line[i]);
 	else if (!ft_strncmp(line, "F ", 2) && !map->floor_color)
-		map->floor_color = get_floor_ceiling_texture(&line[i]);
+		map->floor_color = get_floor_ceiling_color(&line[i]);
 	else if (!ft_strncmp(line, "C ", 2) && !map->ceiling_color)
-		map->ceiling_color = get_floor_ceiling_texture(&line[i]);
+		map->ceiling_color = get_floor_ceiling_color(&line[i]);
 	else
 	{
 		ft_putstr_fd("Error, incorrect texture\n", 2);

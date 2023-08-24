@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/23 10:25:56 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 11:29:11 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static char	*refile_new_line(char **template, int max_len, int i)
-{
-	int		j;
-	char	*new_line;
-
-	j = 0;
-	new_line = malloc(sizeof(char) * (max_len + 1));
-	while (template[i][j])
-	{
-		new_line[j] = template[i][j];
-		j++;
-	}
-	while (j != max_len)
-		new_line[j++] = ' ';
-	new_line[j] = '\0';
-	return (new_line);
-}
 
 static char	**reformatting_map(char **template)
 {
@@ -78,7 +60,7 @@ static int	check_plot_zero(char **file, int i, int j)
 	return (0);
 }
 
-static int	check_plot(t_main *main, char **file, int index, int i, int j)
+static int	check_plot(char **file, int index, int j)
 {
 	if (file[index][j] && (file[index][j] != ' ' && file[index][j] != '1'
 		&& file[index][j] != '0' && file[index][j] != 'N'
@@ -87,12 +69,6 @@ static int	check_plot(t_main *main, char **file, int index, int i, int j)
 	{
 		ft_putstr_fd("Error, wrong plot format", 2);
 		exit(1);
-	}
-	else if (file[index][j] && (file[index][j] == 'N'|| file[index][j] == 'S'
-		|| file[index][j] == 'W'|| file[index][j] == 'E'))
-	{
-		set_player_pos(&main->player, i, j);
-		set_player_dir(main, file[index][j]);
 	}
 	else if (file[index][j] && file[index][j] == '0'
 		&& check_plot_zero(file, index, j))
@@ -103,33 +79,44 @@ static int	check_plot(t_main *main, char **file, int index, int i, int j)
 	return (0);
 }
 
-void	parsing_map(t_main *main, char **tab_file, int index, int size)
+void	check_map(t_main *main, char **tab_file, int i)
+{
+	int	j;
+
+	j = 0;
+	while (tab_file[i][j] && tab_file[i][j] != '\n')
+	{
+		check_plot(tab_file, i, j);
+		if (tab_file[i][j] && (tab_file[i][j] == 'N'
+			|| tab_file[i][j] == 'S' || tab_file[i][j] == 'W'
+			|| tab_file[i][j] == 'E'))
+		{
+			set_player_pos(&main->player, i, j);
+			set_player_dir(main, tab_file[i][j]);
+		}
+		j++;
+	}
+}
+
+void	parsing_map(t_main *main, char **tab_file, int index)
 {
 	int	i;
 	int	j;
-	int	k;
 
 	i = 0;
-	k = 0;
-	main->map.format_map = malloc(sizeof(char *) * size + 1);
+	j = 0;
 	while (tab_file[index])
 	{
-		j = 0;
 		if (tab_file[index][0] == '\n')
 		{
 			ft_putstr_fd("Error, wrong map format\n", 2);
 			exit(1);
 		}
-		while (tab_file[index][j])
-		{
-			if (tab_file[index][j] == '\n')
-				break ;
-			check_plot(main, tab_file, index, i, j);
-			j++;
-		}
-		main->map.format_map[k++] = tab_file[index++];
+		check_map(main, tab_file, index);
+		main->map.format_map[j++] = ft_strdup(tab_file[index++]);
 		i++;
 	}
-	main->map.format_map[k] = NULL;
+	main->map.format_map[j] = NULL;
+	free_tab(tab_file);
 	main->map.format_map = reformatting_map(main->map.format_map);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_values.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:53:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/23 10:38:21 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/23 11:52:03 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	set_default_key_valus(t_main *main)
 	main->key.right = 0;
 }
 
-void	init_map_valus(t_main *main)
+void	init_map_valus(t_main *main, char *file_path)
 {
 	main->map.texture_north = NULL;
 	main->map.texture_south = NULL;
@@ -52,12 +52,12 @@ void	init_map_valus(t_main *main)
 	main->map.texture_west = NULL;
 	main->map.floor_color = 0;
 	main->map.ceiling_color = 0;
-	parsing_map_arg(main, "maps/main_map.cub");
+	parsing_map_arg(main, file_path);
 	main->map.size_x = get_map_size_x(main->map.format_map);
 	main->map.size_y = get_map_size_y(main->map.format_map);
 }
 
-int	init_values(t_main *main)
+int	init_values(t_main *main, char *file_path)
 {
 	main->frame_curent_time = 0;
 	main->ray_array = malloc(sizeof(t_ray) * WIDTH);
@@ -66,7 +66,7 @@ int	init_values(t_main *main)
 	init_parameter(main);
 	init_player_valus(main);
 	set_default_key_valus(main);
-	init_map_valus(main);
+	init_map_valus(main, file_path);
 	load_wall_texture(main);
 	return (0);
 }

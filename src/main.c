@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 18:24:39 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/23 11:27:23 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/23 11:50:35 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	check_input(int argc, char **argv)
 		ft_putstr_fd("Wrong file extension\n", 2);
 		exit(1);
 	}
-	if (open(argv[1]) < 0)
+	if (open(argv[1], O_RDONLY) < 0)
 	{
 		ft_putstr_fd("Cannot open the file\n", 2);
 		exit(1);
@@ -50,7 +50,7 @@ int32_t	main(int argc, char **argv)
 		ft_error();
 	if (mlx_image_to_window(main.mlx_data.mlx, main.mlx_data.img, 0, 0) < 0)
 		ft_error();
-	init_values(&main);
+	init_values(&main, argv[1]);
 	mlx_key_hook(main.mlx_data.mlx, key_hook, &main.key);
 	mlx_loop_hook(main.mlx_data.mlx, loop_hook, &main);
 	mlx_loop(main.mlx_data.mlx);

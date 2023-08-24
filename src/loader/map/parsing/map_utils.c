@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 09:45:07 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/23 10:37:52 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 10:29:05 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+char	*refile_new_line(char **template, int max_len, int i)
+{
+	int		j;
+	char	*new_line;
+
+	j = 0;
+	new_line = malloc(sizeof(char) * (max_len + 1));
+	while (template[i][j])
+	{
+		new_line[j] = template[i][j];
+		j++;
+	}
+	while (j != max_len)
+		new_line[j++] = ' ';
+	new_line[j] = '\0';
+	return (new_line);
+}
 
 int	map_len(char **tab_file, int i)
 {
@@ -40,12 +58,11 @@ void	set_player_dir(t_main *main, char c)
 	if (c == 'N')
 		player_rotate(main, (3 * PI) / 2);
 	if (c == 'S')
-		player_rotate(main, PI/2);
+		player_rotate(main, PI / 2);
 	if (c == 'W')
 		player_rotate(main, 0);
 	if (c == 'E')
 		player_rotate(main, PI);
-
 }
 
 void	set_player_pos(t_player *player, int i, int j)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:12:30 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/23 11:09:40 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 11:28:52 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,11 @@ static char	**file_to_tab_char(char *file)
 	line = get_next_line(fd);
 	while (line)
 	{
+		free(line);
 		i++;
 		line = get_next_line(fd);
-		free(line);
 	}
+	free(line);
 	close(fd);
 	tab_file = refile_tab(file, i);
 	return (tab_file);
@@ -68,5 +69,6 @@ void	parsing_map_arg(t_main *main, char *file)
 	tab_file = file_to_tab_char(file);
 	index = parsing_arguments(&main->map, tab_file);
 	size = map_len(tab_file, index);
-	parsing_map(main, tab_file, (index + 1), size);
+	main->map.format_map = malloc(sizeof(char *) * size + 1);
+	parsing_map(main, tab_file, (index + 1));
 }

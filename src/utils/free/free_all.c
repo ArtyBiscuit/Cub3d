@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:18:49 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/23 11:45:12 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 10:33:19 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_wall_texture(t_texture **tab)
 	int	i;
 
 	i = 0;
-	while (i < 3)
+	while (i <= 3)
 	{
 		free(tab[i]->pixels);
 		free(tab[i]);

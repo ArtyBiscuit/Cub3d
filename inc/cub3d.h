@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:20:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/23 10:24:41 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/08/24 11:28:45 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ void    player_movement_left(t_main *main, float speed);
 void    player_view_up(t_main *main);
 void    player_view_down(t_main *main);
 //	src/init
-int		init_values(t_main *main);
+int		init_values(t_main *main, char *file_path);
 //	src/loader
 //	src/loader/map/parsing
 int	    parsing_arguments(t_map *map, char **tab_file);
 void	check_arguments(int argc, char **argv);
-void	parsing_map(t_main *main, char **tab_file, int index, int size);
+void	parsing_map(t_main *main, char **tab_file, int index);
 int	    check_arg_format(char *arg);
 int	    map_len(char **tab_file, int i);
 void	parsing_map_arg(t_main *main, char *file);
@@ -69,6 +69,7 @@ int	    is_upper_case(char c);
 int	    check_arg_are_refile(t_map map);
 void	set_player_dir(t_main *main, char c);
 void	set_player_pos(t_player *player, int i, int j);
+char	*refile_new_line(char **template, int max_len, int i);
 //	src/loader/texture
 void	load_wall_texture(t_main *main);
 //	src/raycasting
