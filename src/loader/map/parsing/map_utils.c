@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 09:45:07 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/24 10:29:05 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/25 10:42:26 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,31 @@ void	set_player_pos(t_player *player, int i, int j)
 	}
 	player->pos_x = (float)j + 0.5;
 	player->pos_y = (float)i + 0.5;
+}
+
+char	**reformatting_map(char **template)
+{
+	int		i;
+	int		max_len;
+	char	**new_map;
+
+	i = 0;
+	max_len = 0;
+	new_map = NULL;
+	while (template[i])
+	{
+		if ((int)ft_strlen(template[i]) > max_len)
+			max_len = ft_strlen(template[i]);
+		i++;
+	}
+	new_map = malloc(sizeof(char *) * (i + 1));
+	i = 0;
+	while (template[i])
+	{
+		new_map[i] = refile_new_line(template, max_len, i);
+		i++;
+	}
+	new_map[i] = NULL;
+	free_tab(template);
+	return (new_map);
 }

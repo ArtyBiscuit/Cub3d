@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:20:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/24 18:32:53 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/25 10:42:53 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void		check_arguments(int argc, char **argv);
 int			check_arg_format(char *arg);
 void		set_player_dir(t_main *main, char c);
 void		set_player_pos(t_player *player, int i, int j);
+char		**reformatting_map(char **template);
 int			map_len(char **tab_file, int i);
 char		*refile_new_line(char **template, int max_len, int i);
 void		parsing_map(t_main *main, char **tab_file, int index);

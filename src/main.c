@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 18:24:39 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/23 11:50:35 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/25 11:37:14 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int32_t	main(int argc, char **argv)
 	t_main		main;
 
 	check_input(argc, argv);
+	init_values(&main, argv[1]);
 	main.mlx_data.mlx = mlx_init(WIDTH, HEIGHT, "cub3d", false);
 	if (!main.mlx_data.mlx)
 		ft_error();
@@ -50,7 +51,6 @@ int32_t	main(int argc, char **argv)
 		ft_error();
 	if (mlx_image_to_window(main.mlx_data.mlx, main.mlx_data.img, 0, 0) < 0)
 		ft_error();
-	init_values(&main, argv[1]);
 	mlx_key_hook(main.mlx_data.mlx, key_hook, &main.key);
 	mlx_loop_hook(main.mlx_data.mlx, loop_hook, &main);
 	mlx_loop(main.mlx_data.mlx);

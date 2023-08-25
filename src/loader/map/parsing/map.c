@@ -6,37 +6,30 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/24 17:40:51 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/25 11:38:34 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static char	**reformatting_map(char **template)
+static int	check_plot_letter(char **file, int i, int j)
 {
-	int		i;
-	int		max_len;
-	char	**new_map;
-
-	i = 0;
-	max_len = 0;
-	new_map = NULL;
-	while (template[i])
-	{
-		if ((int)ft_strlen(template[i]) > max_len)
-			max_len = ft_strlen(template[i]);
-		i++;
-	}
-	new_map = malloc(sizeof(char *) * (i + 1));
-	i = 0;
-	while (template[i])
-	{
-		new_map[i] = refile_new_line(template, max_len, i);
-		i++;
-	}
-	new_map[i] = NULL;
-	free_tab(template);
-	return (new_map);
+	if ((int)ft_strlen(file[i - 1]) < j || !file[i + 1]
+		|| j == 0 || (int)ft_strlen(file[i]) == j)
+		return (1);
+	if (!file[i - 1][j] || (file[i - 1][j]
+		&& file[i - 1][j] != '1' && file[i - 1][j] != '0'))
+		return (1);
+	if (!file[i + 1][j] || (file[i + 1][j]
+		&& file[i + 1][j] != '1' && file[i + 1][j] != '0'))
+		return (1);
+	if (!file[i][j - 1] || (file[i][j - 1]
+		&& file[i][j - 1] != '1' && file[i][j - 1] != '0'))
+		return (1);
+	if (!file[i][j + 1] || (file[i][j + 1]
+		&& file[i][j + 1] != '1' && file[i][j + 1] != '0'))
+		return (1);
+	return (0);
 }
 
 static int	check_plot_zero(char **file, int i, int j)
@@ -72,6 +65,13 @@ static int	check_plot(char **file, int index, int j)
 	}
 	else if (file[index][j] && file[index][j] == '0'
 		&& check_plot_zero(file, index, j))
+	{
+		ft_putstr_fd("Error, wrong map format\n", 2);
+		exit(1);
+	}
+	else if (file[index][j] && (file[index][j] == 'N' || file[index][j] == 'S'
+		|| file[index][j] == 'W' || file[index][j] == 'E')
+		&& check_plot_letter(file, index, j))
 	{
 		ft_putstr_fd("Error, wrong map format\n", 2);
 		exit(1);
