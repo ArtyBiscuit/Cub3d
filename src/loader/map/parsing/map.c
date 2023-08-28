@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/28 11:49:15 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:58:46 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int	check_plot(char **file, int index, int j)
 	return (0);
 }
 
-static void	check_map(t_main *main, char **tab_file, int i)
+static int	check_map(t_main *main, char **tab_file, int i)
 {
 	int	j;
 
@@ -87,7 +87,7 @@ static void	check_map(t_main *main, char **tab_file, int i)
 	while (tab_file[i][j] && tab_file[i][j] != '\n')
 	{
 		if (check_plot(tab_file, i, j))
-			return (1)
+			return (1);
 		if (tab_file[i][j] && (tab_file[i][j] == 'N'
 			|| tab_file[i][j] == 'S' || tab_file[i][j] == 'W'
 			|| tab_file[i][j] == 'E'))
@@ -97,6 +97,7 @@ static void	check_map(t_main *main, char **tab_file, int i)
 		}
 		j++;
 	}
+	return (0);
 }
 
 int	parsing_map(t_main *main, char **tab_file, int index)
@@ -121,4 +122,5 @@ int	parsing_map(t_main *main, char **tab_file, int index)
 	main->map.format_map[j] = NULL;
 	free_tab(tab_file);
 	main->map.format_map = reformatting_map(main->map.format_map);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 18:24:39 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/25 11:37:14 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/28 17:52:40 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	check_input(int argc, char **argv)
 		ft_putstr_fd("Wrong number of arguments\n", 2);
 		exit(1);
 	}
-	if (!ft_strncmp(argv[1], ".cub", ft_strlen(argv[1]) - 4))
+	if (ft_strncmp(argv[1], ".cub", ft_strlen(argv[1]) - 4))
 	{
 		ft_putstr_fd("Wrong file extension\n", 2);
 		exit(1);
