@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:53:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/24 18:36:09 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:04:29 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	set_default_key_valus(t_main *main)
 	main->key.right = 0;
 }
 
-static void	init_map_valus(t_main *main, char *file_path)
+static int	init_map_valus(t_main *main, char *file_path)
 {
 	printf("STATUS:\tInit Map Valus...\n");
 	main->map.texture_north = NULL;
@@ -55,7 +55,11 @@ static void	init_map_valus(t_main *main, char *file_path)
 	main->map.texture_west = NULL;
 	main->map.floor_color = 0;
 	main->map.ceiling_color = 0;
-	parsing_map_arg(main, file_path);
+	if (parsing_map_arg(main, file_path))
+	{
+		//free tout ce qu'il faut
+		return (1);
+	}
 	main->map.size_x = get_map_size_x(main->map.format_map);
 	main->map.size_y = get_map_size_y(main->map.format_map);
 }
@@ -69,7 +73,8 @@ int	init_values(t_main *main, char *file_path)
 	init_parameter(main);
 	init_player_valus(main);
 	set_default_key_valus(main);
-	init_map_valus(main, file_path);
+	if (init_map_valus(main, file_path))
+		exit(1);
 	load_wall_texture(main);
 	printf("STATUS:\tCompleted !\n");
 	return (0);

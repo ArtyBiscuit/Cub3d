@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/25 11:38:34 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:49:15 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,20 @@ static int	check_plot(char **file, int index, int j)
 		&& file[index][j] != 'E'))
 	{
 		ft_putstr_fd("Error, wrong plot format", 2);
-		exit(1);
+		return(1);
 	}
 	else if (file[index][j] && file[index][j] == '0'
 		&& check_plot_zero(file, index, j))
 	{
 		ft_putstr_fd("Error, wrong map format\n", 2);
-		exit(1);
+		return(1);
 	}
 	else if (file[index][j] && (file[index][j] == 'N' || file[index][j] == 'S'
 		|| file[index][j] == 'W' || file[index][j] == 'E')
 		&& check_plot_letter(file, index, j))
 	{
 		ft_putstr_fd("Error, wrong map format\n", 2);
-		exit(1);
+		return(1);
 	}
 	return (0);
 }
@@ -86,7 +86,8 @@ static void	check_map(t_main *main, char **tab_file, int i)
 	j = 0;
 	while (tab_file[i][j] && tab_file[i][j] != '\n')
 	{
-		check_plot(tab_file, i, j);
+		if (check_plot(tab_file, i, j))
+			return (1)
 		if (tab_file[i][j] && (tab_file[i][j] == 'N'
 			|| tab_file[i][j] == 'S' || tab_file[i][j] == 'W'
 			|| tab_file[i][j] == 'E'))
@@ -98,7 +99,7 @@ static void	check_map(t_main *main, char **tab_file, int i)
 	}
 }
 
-void	parsing_map(t_main *main, char **tab_file, int index)
+int	parsing_map(t_main *main, char **tab_file, int index)
 {
 	int	i;
 	int	j;
@@ -110,9 +111,10 @@ void	parsing_map(t_main *main, char **tab_file, int index)
 		if (tab_file[index][0] == '\n')
 		{
 			ft_putstr_fd("Error, wrong map format\n", 2);
-			exit(1);
+			return (1);
 		}
-		check_map(main, tab_file, index);
+		if (check_map(main, tab_file, index))
+			return (1);
 		main->map.format_map[j++] = ft_strdup(tab_file[index++]);
 		i++;
 	}

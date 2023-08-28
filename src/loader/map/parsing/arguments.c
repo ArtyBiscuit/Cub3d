@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:15:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/23 13:29:34 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:35:35 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	get_floor_ceiling_color(char *line)
 	return (hex);
 }
 
-static void	refile_textures(t_map *map, char *line)
+static int	refile_textures(t_map *map, char *line)
 {
 	int	i;
 
@@ -88,7 +88,7 @@ static void	refile_textures(t_map *map, char *line)
 	else
 	{
 		ft_putstr_fd("Error, incorrect texture\n", 2);
-		exit(1);
+		return (1);
 	}
 }
 
@@ -104,7 +104,7 @@ int	parsing_arguments(t_map *map, char **tab_file)
 		else if (check_arg_format(tab_file[i]))
 		{
 			ft_putstr_fd("Error, incorrect texture\n", 2);
-			exit(1);
+			return (1);
 		}
 		else
 			refile_textures(map, tab_file[i++]);

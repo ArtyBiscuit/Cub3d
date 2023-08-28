@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 09:45:07 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/25 10:42:26 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:39:41 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	map_len(char **tab_file, int i)
 			|| !ft_strncmp(tab_file[i], "C", 1))
 		{
 			ft_putstr_fd("Error: bad line\n", 2);
-			exit(1);
+			return (1);
 		}
 		i++;
 		size++;

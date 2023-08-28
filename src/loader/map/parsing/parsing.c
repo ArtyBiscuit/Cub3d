@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:12:30 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/24 11:28:52 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:48:50 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	**file_to_tab_char(char *file)
 	return (tab_file);
 }
 
-void	parsing_map_arg(t_main *main, char *file)
+int	parsing_map_arg(t_main *main, char *file)
 {
 	int		size;
 	int		index;
@@ -68,7 +68,21 @@ void	parsing_map_arg(t_main *main, char *file)
 	index = 0;
 	tab_file = file_to_tab_char(file);
 	index = parsing_arguments(&main->map, tab_file);
+	if (index == 1)
+	{
+		// free tout le bazar
+		return (1);
+	}
 	size = map_len(tab_file, index);
+	if (size == 1)
+	{
+		// free tout le bazar
+		return (1);
+	}
 	main->map.format_map = malloc(sizeof(char *) * size + 1);
-	parsing_map(main, tab_file, (index + 1));
+	if (parsing_map(main, tab_file, (index + 1)))
+	{
+		free_tab(main->map.format_map)
+		return (1);
+	}
 }
