@@ -21,7 +21,7 @@ _CYAN		="\033[0;36m"
 ########## ARGUMENTS ##########
 
 NAME		= cub3d
-CC			= clang
+CC			= gcc   ## Ne pas oublier !!!!!!!!
 CFLAGS		= -Wall -Werror -Wextra -g3
 
 ########## SOURCES ##########

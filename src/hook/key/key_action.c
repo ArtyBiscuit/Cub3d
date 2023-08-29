@@ -26,6 +26,8 @@ void	key_action_press(mlx_key_data_t keydata, t_key *key)
 		key->left = 1;
 	if (keydata.key == 262 && keydata.action == MLX_PRESS)
 		key->right = 1;
+	if (keydata.key == 256 && keydata.action == MLX_PRESS)
+		key->esc = 1;
 }
 
 void	key_action_release(mlx_key_data_t keydata, t_key *key)
@@ -42,4 +44,6 @@ void	key_action_release(mlx_key_data_t keydata, t_key *key)
 		key->left = 0;
 	if (keydata.key == 262 && keydata.action == MLX_RELEASE)
 		key->right = 0;
+	if (keydata.key == 256 && keydata.action == MLX_RELEASE)
+		key->esc = 0;
 }

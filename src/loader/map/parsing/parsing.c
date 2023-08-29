@@ -49,7 +49,8 @@ static char	**file_to_tab_char(char *file)
 	if (!line)
 	{
 		ft_putstr_fd("Error: empty file\n", 2);
-		exit(1);
+		close(fd);
+		return (NULL);
 	}
 	while (line)
 	{
@@ -63,6 +64,15 @@ static char	**file_to_tab_char(char *file)
 	return (tab_file);
 }
 
+static int	check_index_size(int index, int size)
+{
+	if (index == 1)
+		return (1);
+	if (size == 1)
+		return (1);
+	return (0);
+}
+
 int	parsing_map_arg(t_main *main, char *file)
 {
 	int		size;
@@ -70,23 +80,23 @@ int	parsing_map_arg(t_main *main, char *file)
 	char	**tab_file;
 
 	tab_file = file_to_tab_char(file);
+	if (!tab_file)
+		return (1);
 	index = parsing_arguments(&main->map, tab_file);
-	if (index == 1)
-	{
-		free_tab(tab_file);
-		return (1);
-	}
 	size = map_len(tab_file, index);
-	if (size == 1)
+	if (check_index_size(index, size))
 	{
 		free_tab(tab_file);
+		tab_file = NULL;
 		return (1);
 	}
-	main->map.format_map = malloc(sizeof(char *) * size+ 1);
+	main->map.format_map = malloc(sizeof(char *) * size + 1);
 	if (parsing_map(main, tab_file, (index + 1)))
 	{
 		free_tab(tab_file);
 		free_tab(main->map.format_map);
+		tab_file = NULL;
+		main->map.format_map = NULL;
 		return (1);
 	}
 	return (0);

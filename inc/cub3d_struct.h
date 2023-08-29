@@ -114,6 +114,7 @@ typedef struct s_key
 	int	d;
 	int	left;
 	int	right;
+	int	esc;
 }				t_key;
 
 typedef struct s_main

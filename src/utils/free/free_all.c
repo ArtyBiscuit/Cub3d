@@ -45,11 +45,13 @@ void	free_tab(char **tab)
 void	free_all(t_main *main)
 {
 	free(main->ray_array);
-	free_tab(main->map.format_map);
+	if (main->map.format_map)
+		free_tab(main->map.format_map);
 	free(main->map.texture_east);
 	free(main->map.texture_west);
 	free(main->map.texture_north);
 	free(main->map.texture_south);
-	free_wall_texture(main->wall_texture);
+	if (main->wall_texture)
+		free_wall_texture(main->wall_texture);
 	mlx_terminate(main->mlx_data.mlx);
 }

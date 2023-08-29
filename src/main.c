@@ -22,7 +22,6 @@ static void	check_input(int argc, char **argv)
 {
 	int	i;
 
-	i = ft_strlen(argv[1]) - 4;
 	if (argc != 2)
 	{
 		ft_putstr_fd("Wrong number of arguments\n", 2);
@@ -33,6 +32,7 @@ static void	check_input(int argc, char **argv)
 		ft_putstr_fd("Cannot open the file\n", 2);
 		exit(1);
 	}
+	i = ft_strlen(argv[1]) - 4;
 	if (ft_strncmp(&(argv[1][i]), ".cub", 4))
 	{
 		ft_putstr_fd("Wrong file extension\n", 2);
@@ -58,7 +58,11 @@ int32_t	main(int argc, char **argv)
 		ft_error();
 	if (mlx_image_to_window(main.mlx_data.mlx, main.mlx_data.img, 0, 0) < 0)
 		ft_error();
-	init_values(&main, argv[1]);
+	if (init_values(&main, argv[1]))
+	{
+		free_all(&main);
+		return (1);
+	}
 	mlx_key_hook(main.mlx_data.mlx, key_hook, &main.key);
 	mlx_loop_hook(main.mlx_data.mlx, loop_hook, &main);
 	mlx_loop(main.mlx_data.mlx);

@@ -26,8 +26,8 @@
 
 /***************  DEFINES  ****************/
 
-# define WIDTH 1080
-# define HEIGHT 720.0
+# define WIDTH 3000
+# define HEIGHT 2000
 # define MINIMAP_SIZE 80
 # define PI 3.14159265359
 # define MLX_ERROR 1

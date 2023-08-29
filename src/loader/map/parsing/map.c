@@ -61,20 +61,20 @@ static int	check_plot(char **file, int index, int j)
 		&& file[index][j] != 'E'))
 	{
 		ft_putstr_fd("Error, wrong plot format", 2);
-		return(1);
+		return (1);
 	}
 	else if (file[index][j] && file[index][j] == '0'
 		&& check_plot_zero(file, index, j))
 	{
 		ft_putstr_fd("Error, wrong map format\n", 2);
-		return(1);
+		return (1);
 	}
 	else if (file[index][j] && (file[index][j] == 'N' || file[index][j] == 'S'
 		|| file[index][j] == 'W' || file[index][j] == 'E')
 		&& check_plot_letter(file, index, j))
 	{
 		ft_putstr_fd("Error, wrong map format\n", 2);
-		return(1);
+		return (1);
 	}
 	return (0);
 }

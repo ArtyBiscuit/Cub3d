@@ -44,11 +44,14 @@ static void	set_default_key_valus(t_main *main)
 	main->key.d = 0;
 	main->key.left = 0;
 	main->key.right = 0;
+	main->key.esc = 0;
 }
 
 static int	init_map_valus(t_main *main, char *file_path)
 {
 	printf("STATUS:\tInit Map Valus...\n");
+	main->map.format_map = NULL;
+	main->wall_texture = NULL;
 	main->map.texture_north = NULL;
 	main->map.texture_south = NULL;
 	main->map.texture_east = NULL;
@@ -72,7 +75,7 @@ int	init_values(t_main *main, char *file_path)
 	init_player_valus(main);
 	set_default_key_valus(main);
 	if (init_map_valus(main, file_path))
-		exit(1);
+		return (1);
 	load_wall_texture(main);
 	printf("STATUS:\tCompleted !\n");
 	return (0);

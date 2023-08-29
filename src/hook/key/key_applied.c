@@ -29,4 +29,6 @@ void	key_applied(t_main *main)
 		player_rotate(main, -0.1 * main->parameter.sensitivity);
 	if (main->key.right)
 		player_rotate(main, 0.1 * main->parameter.sensitivity);
+	if (main->key.esc)
+		exit(0);
 }
