@@ -20,19 +20,27 @@ static void	ft_error(void)
 
 static void	check_input(int argc, char **argv)
 {
+	int	i;
+
+	i = ft_strlen(argv[1]) - 4;
 	if (argc != 2)
 	{
 		ft_putstr_fd("Wrong number of arguments\n", 2);
 		exit(1);
 	}
-	if (ft_strncmp(argv[1], ".cub", ft_strlen(argv[1]) - 4))
+	if (open(argv[1], O_RDONLY) < 0)
+	{
+		ft_putstr_fd("Cannot open the file\n", 2);
+		exit(1);
+	}
+	if (ft_strncmp(&(argv[1][i]), ".cub", 4))
 	{
 		ft_putstr_fd("Wrong file extension\n", 2);
 		exit(1);
 	}
-	if (open(argv[1], O_RDONLY) < 0)
+	if ((argv[1][i - 1] && argv[1][i - 1] == '/') || i <= 0)
 	{
-		ft_putstr_fd("Cannot open the file\n", 2);
+		ft_putstr_fd("Wrong file name\n", 2);
 		exit(1);
 	}
 }

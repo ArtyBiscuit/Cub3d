@@ -111,10 +111,8 @@ static int	check_floor_ceiling_format(char *arg)
 int	check_arg_format(char *arg)
 {
 	int	i;
-	int	count;
 
 	i = 0;
-	count = 0;
 	if (!is_upper_case(arg[i]))
 		return (1);
 	if (arg[i] == 'F' || arg[i] == 'C')
