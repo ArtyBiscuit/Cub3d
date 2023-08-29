@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 18:24:39 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/28 17:52:40 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:15:42 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	check_input(int argc, char **argv)
 		ft_putstr_fd("Wrong file extension\n", 2);
 		exit(1);
 	}
-	if ((argv[1][i - 1] && argv[1][i - 1] == '/') || i <= 0)
+	if ((argv[1][i - 1] && argv[1][i - 1] == '/') || i == 0)
 	{
 		ft_putstr_fd("Wrong file name\n", 2);
 		exit(1);
@@ -50,7 +50,6 @@ int32_t	main(int argc, char **argv)
 	t_main		main;
 
 	check_input(argc, argv);
-	init_values(&main, argv[1]);
 	main.mlx_data.mlx = mlx_init(WIDTH, HEIGHT, "cub3d", false);
 	if (!main.mlx_data.mlx)
 		ft_error();
@@ -59,6 +58,7 @@ int32_t	main(int argc, char **argv)
 		ft_error();
 	if (mlx_image_to_window(main.mlx_data.mlx, main.mlx_data.img, 0, 0) < 0)
 		ft_error();
+	init_values(&main, argv[1]);
 	mlx_key_hook(main.mlx_data.mlx, key_hook, &main.key);
 	mlx_loop_hook(main.mlx_data.mlx, loop_hook, &main);
 	mlx_loop(main.mlx_data.mlx);

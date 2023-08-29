@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:53:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/28 17:04:52 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:04:11 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ static int	init_map_valus(t_main *main, char *file_path)
 	main->map.floor_color = 0;
 	main->map.ceiling_color = 0;
 	if (parsing_map_arg(main, file_path))
-	{
-		//free tout ce qu'il faut
 		return (1);
-	}
 	main->map.size_x = get_map_size_x(main->map.format_map);
 	main->map.size_y = get_map_size_y(main->map.format_map);
 	return (0);
