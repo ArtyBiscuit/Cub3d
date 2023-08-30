@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/28 16:58:46 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:38:17 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ static int	check_plot_letter(char **file, int i, int j)
 
 static int	check_plot_zero(char **file, int i, int j)
 {
+	if ((int)ft_strlen(file[i - 1]) < j || !file[i + 1]
+		|| j == 0 || (int)ft_strlen(file[i]) == j)
+		return (1);
 	if (file[i - 1][j] && file[i - 1][j] != '1' && file[i - 1][j] != '0'
 		&& file[i - 1][j] != 'N' && file[i - 1][j] != 'S'
 		&& file[i - 1][j] != 'W' && file[i - 1][j] != 'E')
@@ -60,20 +63,20 @@ static int	check_plot(char **file, int index, int j)
 		&& file[index][j] != 'S' && file[index][j] != 'W'
 		&& file[index][j] != 'E'))
 	{
-		ft_putstr_fd("Error, wrong plot format", 2);
+		ft_putstr_fd("ERROR:\twrong plot format", 2);
 		return (1);
 	}
 	else if (file[index][j] && file[index][j] == '0'
 		&& check_plot_zero(file, index, j))
 	{
-		ft_putstr_fd("Error, wrong map format\n", 2);
+		ft_putstr_fd("ERROR:\twrong map format\n", 2);
 		return (1);
 	}
 	else if (file[index][j] && (file[index][j] == 'N' || file[index][j] == 'S'
 		|| file[index][j] == 'W' || file[index][j] == 'E')
 		&& check_plot_letter(file, index, j))
 	{
-		ft_putstr_fd("Error, wrong map format\n", 2);
+		ft_putstr_fd("ERROR:\twrong map format\n", 2);
 		return (1);
 	}
 	return (0);
@@ -92,7 +95,8 @@ static int	check_map(t_main *main, char **tab_file, int i)
 			|| tab_file[i][j] == 'S' || tab_file[i][j] == 'W'
 			|| tab_file[i][j] == 'E'))
 		{
-			set_player_pos(&main->player, i, j);
+			if (set_player_pos(&main->player, i, j))
+				return (1);
 			set_player_dir(main, tab_file[i][j]);
 		}
 		j++;
@@ -109,9 +113,10 @@ int	parsing_map(t_main *main, char **tab_file, int index)
 	j = 0;
 	while (tab_file[index])
 	{
+		main->map.format_map[j] = NULL;
 		if (tab_file[index][0] == '\n')
 		{
-			ft_putstr_fd("Error, wrong map format\n", 2);
+			ft_putstr_fd("ERROR:\twrong map format\n", 2);
 			return (1);
 		}
 		if (check_map(main, tab_file, index))

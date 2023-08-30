@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:15:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/29 13:55:33 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:44:34 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static int	refile_textures(t_map *map, char *line)
 		map->ceiling_color = get_floor_ceiling_color(&line[i]);
 	else
 	{
-		ft_putstr_fd("Error: the texture already exists\n", 2);
+		ft_putstr_fd("ERROR:\tthe texture already exists\n", 2);
 		return (1);
 	}
 	return (0);
@@ -103,10 +103,7 @@ int	parsing_arguments(t_map *map, char **tab_file)
 		if (tab_file[i] && tab_file[i][0] == '\n')
 			i++;
 		else if (check_arg_format(tab_file[i]))
-		{
-			ft_putstr_fd("Error: incorrect texture\n", 2);
 			return (1);
-		}
 		else if (refile_textures(map, tab_file[i]))
 			return (1);
 		else

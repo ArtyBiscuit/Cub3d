@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:12:30 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/29 13:57:21 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:45:12 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char	**file_to_tab_char(char *file)
 	line = get_next_line(fd);
 	if (!line)
 	{
-		ft_putstr_fd("Error: empty file\n", 2);
+		ft_putstr_fd("ERROR:\tempty file\n", 2);
 		close(fd);
 		return (NULL);
 	}
@@ -67,9 +67,15 @@ static char	**file_to_tab_char(char *file)
 static int	check_index_size(int index, int size)
 {
 	if (index == 1)
+	{
+		ft_putstr_fd("ERROR:\tincorrect texture\n", 2);
 		return (1);
+	}
 	if (size == 1)
+	{
+		ft_putstr_fd("ERROR:\tbad line\n", 2);
 		return (1);
+	}
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 18:31:51 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/24 18:37:38 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/30 13:58:59 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ void	key_applied(t_main *main)
 	if (main->key.right)
 		player_rotate(main, 0.1 * main->parameter.sensitivity);
 	if (main->key.esc)
+	{
+		free_all(main);
 		exit(0);
+	}
 }

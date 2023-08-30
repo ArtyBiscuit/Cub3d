@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:20:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/28 11:49:46 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:31:57 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 /***************  DEFINES  ****************/
 
-# define WIDTH 3000
-# define HEIGHT 2000
+# define WIDTH 1280
+# define HEIGHT 720
 # define MINIMAP_SIZE 80
 # define PI 3.14159265359
 # define MLX_ERROR 1
@@ -61,7 +61,7 @@ int			parsing_arguments(t_map *map, char **tab_file);
 void		check_arguments(int argc, char **argv);
 int			check_arg_format(char *arg);
 void		set_player_dir(t_main *main, char c);
-void		set_player_pos(t_player *player, int i, int j);
+int 		set_player_pos(t_player *player, int i, int j);
 char		**reformatting_map(char **template);
 int			map_len(char **tab_file, int i);
 char		*refile_new_line(char **template, int max_len, int i);
