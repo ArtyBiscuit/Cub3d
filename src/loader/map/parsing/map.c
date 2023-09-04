@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/30 14:38:17 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/04 09:46:54 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,22 +82,22 @@ static int	check_plot(char **file, int index, int j)
 	return (0);
 }
 
-static int	check_map(t_main *main, char **tab_file, int i)
+static int	check_map(t_main *main, char **tab_file, int index, int i)
 {
 	int	j;
 
 	j = 0;
-	while (tab_file[i][j] && tab_file[i][j] != '\n')
+	while (tab_file[index][j] && tab_file[index][j] != '\n')
 	{
-		if (check_plot(tab_file, i, j))
+		if (check_plot(tab_file, index, j))
 			return (1);
-		if (tab_file[i][j] && (tab_file[i][j] == 'N'
-			|| tab_file[i][j] == 'S' || tab_file[i][j] == 'W'
-			|| tab_file[i][j] == 'E'))
+		if (tab_file[index][j] && (tab_file[index][j] == 'N'
+			|| tab_file[index][j] == 'S' || tab_file[index][j] == 'W'
+			|| tab_file[index][j] == 'E'))
 		{
 			if (set_player_pos(&main->player, i, j))
 				return (1);
-			set_player_dir(main, tab_file[i][j]);
+			set_player_dir(main, tab_file[index][j]);
 		}
 		j++;
 	}
@@ -119,7 +119,7 @@ int	parsing_map(t_main *main, char **tab_file, int index)
 			ft_putstr_fd("ERROR:\twrong map format\n", 2);
 			return (1);
 		}
-		if (check_map(main, tab_file, index))
+		if (check_map(main, tab_file, index, i))
 			return (1);
 		main->map.format_map[j++] = ft_strdup(tab_file[index++]);
 		i++;
