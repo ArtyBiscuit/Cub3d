@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:20:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/04 10:12:26 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/06 10:04:22 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int			get_map_size_x(char **map);
 int			get_map_size_y(char **map);
 t_texture	*img_to_struct(mlx_image_t *img);
 int			rgba_to_hex(int r, int g, int b, int a);
+int			check_empty_line(char *str);
 //	src/utils/coordinates
 int			get_cardinal_side(t_ray *ray);
 //	src/utils/free

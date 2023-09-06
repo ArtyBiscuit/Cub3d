@@ -5,124 +5,91 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/27 15:54:08 by axcallet          #+#    #+#             */
-/*   Updated: 2023/07/27 16:45:37 by axcallet         ###   ########.fr       */
+/*   Created: 2023/09/06 10:00:44 by axcallet          #+#    #+#             */
+/*   Updated: 2023/09/06 11:38:27 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	check_texture_path(char *arg, int i)
+static int	check_texture_format(char *str)
 {
-	if ((arg[i] || arg[i + 1]) && ((arg[i] != '.' || arg[i + 1] != '/')))
-		return (1);
-	while (arg[i] && !is_space(arg[i]))
+	int	i;
+
+	i = 2;
+	while (str[i] && str[i] == ' ')
 		i++;
-	if (arg[i])
+	if ((str[i] || str[i + 1]) && ((str[i] != '.' || str[i + 1] != '/')))
+		return (1); 
+}
+
+static int	check_color_value(char *str)
+{
+	int		i;
+	int		j;
+	char	*buff
+
+	i = 0;
+	j = 0;
+	while (ft_isdigit(str[i]))
+		i++;
+	if (i > 3 || i = 0)
+		return (1);
+	if (str[i + 1] != ' ' && str[i + 1] != ',' && str[i + 1] != '\n')
+		return (1);
+	buff = ft_substr(str, j, i);
+	if (ft_atoi(buff) > 255 || ft_atoi(buff) < 0)
 		return (1);
 	return (0);
 }
 
-static int	check_texture_format(char *arg)
+static int	check_color_format(char *str)
 {
 	int	i;
-	int	count;
 
-	i = 0;
-	count = 0;
-	while (ft_isalpha(arg[i]))
+	i = 1;
+	while (str[i] && str[i] == ' ')
+		i++;
+	while (count < 3)
 	{
-		if (!is_upper_case(arg[i++]))
+		if (check_color_value(&str[i]))
 			return (1);
+		while (str[i] && ft_isdigit[str[i]])
+			i++;
+		while (str[i] && str[i] == ' ')
+			i++;
+		if (str[i] && str[i] != ',')
+			return (1);
+		i++;
+		if (str[i] && str[i] != ' ' && !ft_isdigit(str[i]))
+			return (1);
+		while (str[i] && str[i] == ' ')
+			i++;
 		count++;
 	}
-	if (count != 2)
-		return (1);
-	if (!is_space(arg[i]))
-		return (1);
-	while (is_space(arg[i]))
-	{
-		if (arg[i + 1] == '\0')
-			return (1);
-		i++;
-	}
-	if (check_texture_path(arg, i))
-		return (1);
 	return (0);
 }
 
-static int	check_floor_ceiling_value(char *arg, int i)
-{
-	int	count_a;
-	int	count_b;
-
-	count_a = 0;
-	while (count_a++ != 4)
-	{
-		count_b = 0;
-		while (arg[i] != ',' && arg[i] != '\n')
-		{
-			if (!ft_isdigit(arg[i++]))
-				return (1);
-			if (++count_b > 3)
-				return (1);
-		}
-		if (count_a == 3)
-			break ;
-		if (arg[i] != ',')
-			return (1);
-		i++;
-		if (!ft_isdigit(arg[i]))
-			return (1);
-	}
-	if (arg[i] != '\n')
-		return (1);
-	return (0);
-}
-
-static int	check_floor_ceiling_format(char *arg)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (ft_isalpha(arg[i]))
-	{
-		if (!is_upper_case(arg[i++]))
-			return (1);
-		count++;
-	}
-	if (count != 1)
-		return (1);
-	if (!is_space(arg[i]))
-		return (1);
-	while (is_space(arg[i]))
-	{
-		if (arg[i + 1] == '\0')
-			return (1);
-		i++;
-	}
-	if (check_floor_ceiling_value(arg, i))
-		return (1);
-	return (0);
-}
-
-int	check_arg_format(char *arg)
+int check_arg_format(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (!is_upper_case(arg[i]))
+	while (str[i] && str[i] == ' ')
+		i++;
+	if (ft_strncmp("NO ", &str[i], 3) && ft_strncmp("SO ", &str[i], 3)
+		&& ft_strncmp("WE ", &str[i], 3) && ft_strncmp("EA ", &str[i], 3)
+		&& ft_strncmp("F ", &str[i], 2) && ft_strncmp("C ", &str[i], 2))
 		return (1);
-	if (arg[i] == 'F' || arg[i] == 'C')
+	if (!ft_strncmp("NO ", &str[i], 3) || !ft_strncmp("SO ", &str[i], 3)
+		|| !ft_strncmp("WE ", &str[i], 3) || !ft_strncmp("EA ", &str[i], 3))
 	{
-		if (check_floor_ceiling_format(arg))
+		if (check_texture_format(&str[i]))
 			return (1);
 	}
-	else
+	else if (!ft_strncmp("F ", &str[i], 2) || !ft_strncmp("C ", &str[i], 2))
 	{
-		if (check_texture_format(arg))
+		if (check_color_format(&str[i]))
 			return (1);
 	}
 	return (0);

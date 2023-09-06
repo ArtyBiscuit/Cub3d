@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:15:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/30 14:44:34 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/06 10:08:13 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	parsing_arguments(t_map *map, char **tab_file)
 	i = 0;
 	while (check_arg_are_refile(*map))
 	{
-		if (tab_file[i] && tab_file[i][0] == '\n')
+		if (check_empty_line(tab_file[i]))
 			i++;
 		else if (check_arg_format(tab_file[i]))
 			return (1);
