@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:00:44 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/07 09:54:12 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:42:23 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int	check_texture_format(char *str)
 		i++;
 	if ((str[i] || str[i + 1]) && ((str[i] != '.' || str[i + 1] != '/')))
 		return (1);
+	return (0);
 }
 
 static int	check_color_value(char *str)
@@ -35,7 +36,7 @@ static int	check_color_value(char *str)
 		i++;
 	if (i > 3 || i == 0)
 		return (1);
-	if (str[i + 1] != ' ' && str[i + 1] != ',' && str[i + 1] != '\n')
+	if (str[i] != ' ' && str[i] != ',' && str[i] != '\n')
 		return (1);
 	buff = ft_substr(str, j, i);
 	if (ft_atoi(buff) > 255 || ft_atoi(buff) < 0)
@@ -47,23 +48,38 @@ static int	check_color_value(char *str)
 	return (0);
 }
 
-static int	check_color_format(char *str)
+static int	check_character(char *str)
 {
 	int	i;
 
-	i = 1;
-	while (str[i] && str[i] == ' ')
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]) && str[i] != ' '
+			&& str[i] != ',' && str[i] != '\n')
+			return (1);
 		i++;
+	}
+	return (0);
+}
+
+static int	check_color_format(char *str)
+{
+	int	i;
+	int	count;
+
+	i = 1;
+	count = 0;
+	if (check_character(&str[i]))
+		return (1);
 	while (count < 3)
 	{
-		if (check_color_value(&str[i]))
-			return (1);
-		while (str[i] && ft_isdigit[str[i]])
-			i++;
 		while (str[i] && str[i] == ' ')
 			i++;
-		if (str[i] && str[i] != ',')
+		if (check_color_value(&str[i]))
 			return (1);
+		while (str[i] && str[i] == ',')
+			i++;
 		i++;
 		if (str[i] && str[i] != ' ' && !ft_isdigit(str[i]))
 			return (1);

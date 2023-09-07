@@ -6,7 +6,7 @@
 #    By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/07 10:04:45 by axcallet          #+#    #+#              #
-#    Updated: 2023/08/24 17:32:44 by axcallet         ###   ########.fr        #
+#    Updated: 2023/09/07 10:02:53 by axcallet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRC = src/main.c									\
 	  src/hook/movement/player_movement.c			\
 	  src/init/init_values.c						\
 	  src/loader/texture/load_texture.c				\
+	  src/loader/map/parsing/arguments_utils.c		\
 	  src/loader/map/parsing/arguments.c			\
 	  src/loader/map/parsing/check_file.c			\
 	  src/loader/map/parsing/map.c					\

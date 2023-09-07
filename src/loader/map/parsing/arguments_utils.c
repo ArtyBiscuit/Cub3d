@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 14:05:16 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/07 09:54:26 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:20:23 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_color_refile(int *tab)
 {
-	if (!tab[0] && !tab[1] && !tab[2])
+	if (tab[0] == -1 || tab[1] == -1 || tab[2] == -1)
 		return (1);
 	return (0);
 }

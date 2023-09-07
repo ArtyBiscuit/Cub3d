@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 09:45:07 by axcallet          #+#    #+#             */
-/*   Updated: 2023/08/30 14:45:18 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/07 10:05:21 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	set_player_pos(t_player *player, int i, int j)
 {
 	if (player->pos_x != 0.0 || player->pos_y != 0.0)
 	{
-		ft_putstr_fd("ERROR:\twrong player pos\n", 2);
+		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
 	player->pos_x = (float)j + 0.5;

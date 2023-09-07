@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:20:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/06 10:04:22 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/07 09:58:43 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int			parsing_map_arg(t_main *main, char *file);
 int			is_space(char c);
 int			is_upper_case(char c);
 int			check_arg_are_refile(t_map map);
+int			check_color_refile(int *tab);
 //	src/loader/texture
 void		load_wall_texture(t_main *main);
 //	src/raycasting
