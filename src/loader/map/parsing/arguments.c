@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:15:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/06 10:08:13 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/07 09:39:00 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,42 +28,46 @@ static char	*get_texture(char *line)
 	return (wall_texture);
 }
 
-static int	*refile_tab_color(char *line)
+static int	refile_color(char *str)
 {
 	int		i;
 	int		j;
-	int		count;
-	int		*tab_rgb;
-	char	*tmp;
+	int		res;
+	char	*buff;
 
-	i = 1;
-	count = 0;
-	tab_rgb = malloc(sizeof(int) * 3);
-	while (is_space(line[i]))
+	i = 0;
+	j = 0;
+	while (str[i] && ft_isdigit(str[i]))
 		i++;
-	while (count != 3)
-	{
-		j = i;
-		while (line[i] && line[i] != ',')
-			i++;
-		tmp = ft_substr(line, j, (i - j));
-		tab_rgb[count] = ft_atoi(tmp);
-		free(tmp);
-		i++;
-		count++;
-	}
-	return (tab_rgb);
+	buff = ft_substr(str, j, i);
+	res = ft_atoi(buff);
+	free(buff);
+	return (res);
 }
 
-static int	get_floor_ceiling_color(char *line)
+static int	get_color(char *line)
 {
-	int	hex;
-	int	*tab_rgb;
+	int		i;
+	int		j;
+	int		*tab;
 
-	tab_rgb = refile_tab_color(line);
-	hex = rgba_to_hex(tab_rgb[0], tab_rgb[1], tab_rgb[2], 255);
+	i = 1;
+	j = 0;
+	tab = malloc(sizeof(int) * 3);
+	while (check_color_refile(tab))
+	{
+		while (str[i] && str[i] == ' ')
+			i++;
+		tab[j++] = refile_color(&str[i]);
+		while (str[i] && ft_isdigit(str[i]))
+			i++;
+		while (str[i] && str[i] != ',')
+			i++;
+		if (str[i])
+			i++;
+	}
 	free(tab_rgb);
-	return (hex);
+	return (hrgba_to_hex(tab_rgb[0], tab_rgb[1], tab_rgb[2], 255));
 }
 
 static int	refile_textures(t_map *map, char *line)
@@ -82,9 +86,9 @@ static int	refile_textures(t_map *map, char *line)
 	else if (!ft_strncmp(line, "EA ", 3) && !map->texture_east)
 		map->texture_east = get_texture(&line[i]);
 	else if (!ft_strncmp(line, "F ", 2) && !map->floor_color)
-		map->floor_color = get_floor_ceiling_color(&line[i]);
+		map->floor_color = get_color(&line[i]);
 	else if (!ft_strncmp(line, "C ", 2) && !map->ceiling_color)
-		map->ceiling_color = get_floor_ceiling_color(&line[i]);
+		map->ceiling_color = get_color(&line[i]);
 	else
 	{
 		ft_putstr_fd("ERROR:\tthe texture already exists\n", 2);

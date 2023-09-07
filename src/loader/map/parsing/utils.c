@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:16:26 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/06 10:04:30 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/07 09:54:42 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_arg_are_refile(t_map map)
 
 int	check_empty_line(char *str)
 {
-	int	i; 
+	int	i;
 
 	i = 0;
 	while (str[i])

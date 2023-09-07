@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:00:44 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/06 11:38:27 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/07 09:54:12 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,30 @@ static int	check_texture_format(char *str)
 	while (str[i] && str[i] == ' ')
 		i++;
 	if ((str[i] || str[i + 1]) && ((str[i] != '.' || str[i + 1] != '/')))
-		return (1); 
+		return (1);
 }
 
 static int	check_color_value(char *str)
 {
 	int		i;
 	int		j;
-	char	*buff
+	char	*buff;
 
 	i = 0;
 	j = 0;
 	while (ft_isdigit(str[i]))
 		i++;
-	if (i > 3 || i = 0)
+	if (i > 3 || i == 0)
 		return (1);
 	if (str[i + 1] != ' ' && str[i + 1] != ',' && str[i + 1] != '\n')
 		return (1);
 	buff = ft_substr(str, j, i);
 	if (ft_atoi(buff) > 255 || ft_atoi(buff) < 0)
+	{
+		free(buff);
 		return (1);
+	}
+	free(buff);
 	return (0);
 }
 
@@ -65,12 +69,14 @@ static int	check_color_format(char *str)
 			return (1);
 		while (str[i] && str[i] == ' ')
 			i++;
+		if (str[i] && str[i] == '\n' && count != 3)
+			return (1);
 		count++;
 	}
 	return (0);
 }
 
-int check_arg_format(char *str)
+int	check_arg_format(char *str)
 {
 	int	i;
 
