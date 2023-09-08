@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+         #
+#    By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/07 10:04:45 by axcallet          #+#    #+#              #
-#    Updated: 2023/09/07 10:02:53 by axcallet         ###   ########.fr        #
+#    Updated: 2023/09/08 15:32:25 by arforgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ _CYAN		="\033[0;36m"
 
 ########## ARGUMENTS ##########
 
-NAME		= cub3d
+NAME		= cub3D
 CC			= gcc   ## Ne pas oublier !!!!!!!!
 CFLAGS		= -Wall -Werror -Wextra -g3
 

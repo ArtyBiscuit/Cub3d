@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:20:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/07 09:58:43 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:43:59 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			is_upper_case(char c);
 int			check_arg_are_refile(t_map map);
 int			check_color_refile(int *tab);
 //	src/loader/texture
-void		load_wall_texture(t_main *main);
+int			load_wall_texture(t_main *main);
 //	src/raycasting
 void		check_infinite_value(t_ray *ray);
 void		get_ray_side(t_player player, t_ray *curent_ray);

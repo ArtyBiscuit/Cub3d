@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 18:24:39 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/29 14:15:42 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/08 15:32:37 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int32_t	main(int argc, char **argv)
 	t_main		main;
 
 	check_input(argc, argv);
-	main.mlx_data.mlx = mlx_init(WIDTH, HEIGHT, "cub3d", false);
+	main.mlx_data.mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
 	if (!main.mlx_data.mlx)
 		ft_error();
 	main.mlx_data.img = mlx_new_image(main.mlx_data.mlx, WIDTH, HEIGHT);

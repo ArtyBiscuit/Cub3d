@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_values.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:53:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/08/29 14:04:11 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:45:26 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,12 @@ int	init_values(t_main *main, char *file_path)
 	set_default_key_valus(main);
 	if (init_map_valus(main, file_path))
 		return (1);
-	load_wall_texture(main);
+	if(load_wall_texture(main))
+	{
+		free_all(main);
+		write(2, "Errdddor\n", 9);
+		exit(1);
+	}
 	printf("STATUS:\tCompleted !\n");
 	return (0);
 }
