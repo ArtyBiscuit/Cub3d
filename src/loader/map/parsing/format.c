@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:00:44 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/07 14:42:23 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/08 15:40:26 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	check_color_value(char *str)
 
 	i = 0;
 	j = 0;
-	while (ft_isdigit(str[i]))
+	while (str[i] && ft_isdigit(str[i]))
 		i++;
 	if (i > 3 || i == 0)
 		return (1);
@@ -78,7 +78,7 @@ static int	check_color_format(char *str)
 			i++;
 		if (check_color_value(&str[i]))
 			return (1);
-		while (str[i] && str[i] == ',')
+		while (str[i] && str[i] != ',')
 			i++;
 		i++;
 		if (str[i] && str[i] != ' ' && !ft_isdigit(str[i]))
