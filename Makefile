@@ -6,7 +6,7 @@
 #    By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/07 10:04:45 by axcallet          #+#    #+#              #
-#    Updated: 2023/09/08 15:32:25 by arforgea         ###   ########.fr        #
+#    Updated: 2023/09/08 16:53:41 by arforgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ _CYAN		="\033[0;36m"
 ########## ARGUMENTS ##########
 
 NAME		= cub3D
-CC			= gcc   ## Ne pas oublier !!!!!!!!
+CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra -g3
 
 ########## SOURCES ##########

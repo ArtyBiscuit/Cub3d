@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   format.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:00:44 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/08 15:40:26 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/08 16:51:52 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ static int	check_color_format(char *str)
 	int	count;
 
 	i = 1;
-	count = 0;
+	count = -1;
 	if (check_character(&str[i]))
 		return (1);
-	while (count < 3)
+	while (count++ < 3)
 	{
 		while (str[i] && str[i] == ' ')
 			i++;
@@ -80,14 +80,14 @@ static int	check_color_format(char *str)
 			return (1);
 		while (str[i] && str[i] != ',')
 			i++;
-		i++;
+		if (str[i])
+			i++;
 		if (str[i] && str[i] != ' ' && !ft_isdigit(str[i]))
 			return (1);
 		while (str[i] && str[i] == ' ')
 			i++;
 		if (str[i] && str[i] == '\n' && count != 3)
 			return (1);
-		count++;
 	}
 	return (0);
 }

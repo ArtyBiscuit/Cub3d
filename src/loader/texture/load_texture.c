@@ -6,33 +6,36 @@
 /*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 21:30:21 by arforgea          #+#    #+#             */
-/*   Updated: 2023/09/07 19:44:34 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/09/08 16:49:34 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	check_texture(mlx_texture_t **texture_tmp)
+static int	check_texture(t_main main)
 {
+	int	error;
 	int	index;
-	int	free;
+	int	*fd;
 
+	fd = malloc(sizeof(int) * 4);
+	error = 0;
+	fd[0] = open(main.map.texture_east, O_RDONLY);
+	fd[1] = open(main.map.texture_north, O_RDONLY);
+	fd[2] = open(main.map.texture_south, O_RDONLY);
+	fd[3] = open(main.map.texture_west, O_RDONLY);
 	index = 0;
-	free = 0;
-	while (index < 4)
+	while (index != 3)
 	{
-		if (texture_tmp[index] == NULL)
-		{
-			while (free < 4)
-			{
-				if (texture_tmp[index])
-					mlx_delete_texture(texture_tmp[free]);
-				free++;
-			}
-			return (1);
-		}
+		if (fd[index] > -1)
+			close(fd[index]);
+		else
+			error = -1;
 		index++;
 	}
+	free(fd);
+	if (error < 0)
+		return (1);
 	return (0);
 }
 
@@ -56,6 +59,8 @@ int	load_wall_texture(t_main *main)
 	mlx_texture_t	**texture_tmp;
 
 	printf("STATUS:\tLoad Texture...\n");
+	if (check_texture(*main))
+		return (1);
 	main->wall_texture = malloc(sizeof(t_texture) * 4);
 	img_tmp = malloc(sizeof(mlx_image_t) * 4);
 	texture_tmp = malloc(sizeof(mlx_texture_t) * 4);
@@ -63,8 +68,6 @@ int	load_wall_texture(t_main *main)
 	texture_tmp[1] = mlx_load_png(main->map.texture_south);
 	texture_tmp[2] = mlx_load_png(main->map.texture_east);
 	texture_tmp[3] = mlx_load_png(main->map.texture_west);
-	if(check_texture(texture_tmp))
-		return (1);
 	img_tmp[0] = mlx_texture_to_image(main->mlx_data.mlx, texture_tmp[0]);
 	img_tmp[1] = mlx_texture_to_image(main->mlx_data.mlx, texture_tmp[1]);
 	img_tmp[2] = mlx_texture_to_image(main->mlx_data.mlx, texture_tmp[2]);
