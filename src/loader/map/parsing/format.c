@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   format.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:00:44 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/08 16:51:52 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:39:10 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ static int	check_texture_format(char *str)
 	int	i;
 
 	i = 2;
-	while (str[i] && str[i] == ' ')
+	while (str[i])
+	{
+		if (str[i] && (str[i] != ' ' && str[i] != '\n'))
+			return (0);
 		i++;
-	if ((str[i] || str[i + 1]) && ((str[i] != '.' || str[i + 1] != '/')))
-		return (1);
-	return (0);
+	}
+	return (1);
 }
 
 static int	check_color_value(char *str)
@@ -72,7 +74,7 @@ static int	check_color_format(char *str)
 	count = -1;
 	if (check_character(&str[i]))
 		return (1);
-	while (count++ < 3)
+	while (++count < 3)
 	{
 		while (str[i] && str[i] == ' ')
 			i++;
