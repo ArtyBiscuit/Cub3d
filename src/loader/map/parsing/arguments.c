@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:15:58 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/07 15:13:09 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/15 13:29:52 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,7 @@ int	parsing_arguments(t_map *map, char **tab_file)
 		else
 			i++;
 	}
+	if (check_empty_line(tab_file[i]))
+		return (1);
 	return (i);
 }
