@@ -6,7 +6,7 @@
 #    By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/07 10:04:45 by axcallet          #+#    #+#              #
-#    Updated: 2023/09/13 10:29:11 by axcallet         ###   ########.fr        #
+#    Updated: 2023/09/17 19:51:45 by axcallet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ _CYAN		="\033[0;36m"
 ########## ARGUMENTS ##########
 
 NAME		= cub3D
-CC			= gcc
+CC			= clang
 CFLAGS		= -Wall -Werror -Wextra -g3
 
 ########## SOURCES ##########

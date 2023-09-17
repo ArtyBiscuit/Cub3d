@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 09:45:07 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/07 10:05:21 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/17 21:38:13 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ int	map_len(char **tab_file, int i)
 	int	size;
 
 	size = 0;
-	while (tab_file[i])
+	while (tab_file[i] && !check_empty_line(tab_file[i]))
+		i++;
+	while (tab_file[i] && check_empty_line(tab_file[i]))
 	{
 		if (!ft_strncmp(tab_file[i], "NO", 2)
 			|| !ft_strncmp(tab_file[i], "SO", 2)
@@ -65,10 +67,7 @@ void	set_player_dir(t_main *main, char c)
 int	set_player_pos(t_player *player, int i, int j)
 {
 	if (player->pos_x != 0.0 || player->pos_y != 0.0)
-	{
-		ft_putstr_fd("Error\n", 2);
 		return (1);
-	}
 	player->pos_x = (float)j + 0.5;
 	player->pos_y = (float)i + 0.5;
 	return (0);

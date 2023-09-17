@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:12:30 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/07 17:16:32 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/17 21:39:25 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	check_index_size(int index, int size)
 		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
-	if (size == 1)
+	if (size == 1 || size == 0 || size == 2)
 	{
 		ft_putstr_fd("Error\n", 2);
 		return (1);
@@ -95,7 +95,7 @@ int	parsing_map_arg(t_main *main, char *file)
 		free_tab(tab_file);
 		return (1);
 	}
-	main->map.format_map = malloc(sizeof(char *) * size + 1);
+	main->map.format_map = malloc(sizeof(char *) * (size + 1));
 	if (parsing_map(main, tab_file, (index + 1)))
 	{
 		ft_putstr_fd("Error\n", 2);

@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:16:26 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/07 10:06:46 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/17 21:01:46 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ int	check_empty_line(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 	{
-		if (str[i] != ' ' && str[i] != '\n')
+		if (str[i] && str[i] != ' ' && str[i] != '\n')
 			return (1);
 		i++;
 	}

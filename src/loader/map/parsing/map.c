@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/07 15:14:57 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/17 21:26:32 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,11 @@ int	parsing_map(t_main *main, char **tab_file, int index)
 
 	i = 0;
 	j = 0;
-	while (tab_file[index])
+	while (!check_empty_line(tab_file[index]))
+		index++;
+	while (check_empty_line(tab_file[index]))
 	{
 		main->map.format_map[j] = NULL;
-		if (!check_empty_line(tab_file[index]))
-			return (1);
 		if (check_map(main, tab_file, index, i))
 			return (1);
 		main->map.format_map[j] = ft_strdup(tab_file[index]);
@@ -114,10 +114,10 @@ int	parsing_map(t_main *main, char **tab_file, int index)
 		i++;
 		j++;
 	}
-	if (!main->player.pos_x || !main->player.pos_y)
-		return (1);
 	main->map.format_map[j] = NULL;
 	free_tab(tab_file);
+	if (!main->player.pos_x || !main->player.pos_y)
+		return (1);
 	main->map.format_map = reformatting_map(main->map.format_map);
 	return (0);
 }
