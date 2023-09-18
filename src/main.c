@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 18:24:39 by arforgea          #+#    #+#             */
-/*   Updated: 2023/09/13 10:17:00 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:27:18 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,23 @@ static void	check_input(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Error\nInvalid input\n", 2);
 		exit(1);
 	}
 	if (open(argv[1], O_RDONLY) < 0)
 	{
-		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Error\nInvalid input\n", 2);
 		exit(1);
 	}
 	i = ft_strlen(argv[1]) - 4;
 	if (ft_strncmp(&(argv[1][i]), ".cub", 4))
 	{
-		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Error\nInvalid input\n", 2);
 		exit(1);
 	}
 	if ((argv[1][i - 1] && argv[1][i - 1] == '/') || i == 0)
 	{
-		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Error\nInvalid input\n", 2);
 		exit(1);
 	}
 }

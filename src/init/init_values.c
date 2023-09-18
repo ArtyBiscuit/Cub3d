@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_values.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:53:27 by arforgea          #+#    #+#             */
-/*   Updated: 2023/09/08 16:52:14 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:30:54 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	init_parameter(t_main *main)
 {
-	printf("STATUS:\tInit Parameter...\n");
+	printf("STATUS:\tInit Parameters...\n");
 	main->parameter.speed = 0.1;
 	main->parameter.fov = 90.0f;
 	main->parameter.crossshair_size = 5;
@@ -24,7 +24,7 @@ static void	init_parameter(t_main *main)
 
 static void	init_player_valus(t_main *main)
 {
-	printf("STATUS:\tInit Player Valus...\n");
+	printf("STATUS:\tInit Player Values...\n");
 	main->player.dir_x = 1;
 	main->player.dir_y = 0;
 	main->player.pos_x = 0.0;
@@ -37,7 +37,7 @@ static void	init_player_valus(t_main *main)
 
 static void	set_default_key_valus(t_main *main)
 {
-	printf("STATUS:\tInit Key Valus...\n");
+	printf("STATUS:\tInit Key Values...\n");
 	main->key.w = 0;
 	main->key.a = 0;
 	main->key.s = 0;
@@ -49,7 +49,7 @@ static void	set_default_key_valus(t_main *main)
 
 static int	init_map_valus(t_main *main, char *file_path)
 {
-	printf("STATUS:\tInit Map Valus...\n");
+	printf("STATUS:\tInit Map Values...\n");
 	main->map.format_map = NULL;
 	main->wall_texture = NULL;
 	main->map.texture_north = NULL;
@@ -75,11 +75,14 @@ int	init_values(t_main *main, char *file_path)
 	init_player_valus(main);
 	set_default_key_valus(main);
 	if (init_map_valus(main, file_path))
+	{
+		write(2, "Wrong map/arguments\n", 20);
 		return (1);
+	}
 	if (load_wall_texture(main))
 	{
 		free_all(main);
-		write(2, "Error\n", 6);
+		write(2, "Error\nInvalid texture\n", 22);
 		exit(1);
 	}
 	printf("STATUS:\tCompleted !\n");
