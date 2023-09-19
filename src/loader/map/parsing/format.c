@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:00:44 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/13 11:39:10 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:14:05 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 static int	check_texture_format(char *str)
 {
-	int	i;
+	int		i;
+	char	*buff;
 
 	i = 2;
-	while (str[i])
-	{
-		if (str[i] && (str[i] != ' ' && str[i] != '\n'))
-			return (0);
+	while (str[i + 1] != '\n')
 		i++;
-	}
-	return (1);
+	while (str[i] == ' ')
+		i--;
+	buff = ft_substr(str, (i - 3), 4);
+	if (ft_strncmp(buff, ".png", 4))
+		return (1);
+	return (0);
 }
 
 static int	check_color_value(char *str)

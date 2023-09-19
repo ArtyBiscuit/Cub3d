@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arforgea <arforgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 21:30:21 by arforgea          #+#    #+#             */
-/*   Updated: 2023/09/08 16:49:34 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:57:55 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	check_texture(t_main main)
 	fd[2] = open(main.map.texture_south, O_RDONLY);
 	fd[3] = open(main.map.texture_west, O_RDONLY);
 	index = 0;
-	while (index != 3)
+	while (index != 4)
 	{
 		if (fd[index] > -1)
 			close(fd[index]);
