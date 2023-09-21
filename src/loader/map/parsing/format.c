@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:00:44 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/19 18:14:05 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/21 09:26:33 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ static int	check_texture_format(char *str)
 		i--;
 	buff = ft_substr(str, (i - 3), 4);
 	if (ft_strncmp(buff, ".png", 4))
+	{
+		free(buff);
 		return (1);
+	}
+	free(buff);
 	return (0);
 }
 

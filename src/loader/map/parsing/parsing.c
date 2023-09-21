@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:12:30 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/18 13:26:36 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/21 09:55:02 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	parsing_map_arg(t_main *main, char *file)
 	{
 		ft_putstr_fd("Error\n", 2);
 		free_tab(main->map.format_map);
+		free_tab(tab_file);
 		main->map.format_map = NULL;
 		return (1);
 	}

@@ -6,7 +6,7 @@
 /*   By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:19:15 by axcallet          #+#    #+#             */
-/*   Updated: 2023/09/17 21:49:55 by axcallet         ###   ########.fr       */
+/*   Updated: 2023/09/21 10:32:35 by axcallet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,9 @@ int	parsing_map(t_main *main, char **tab_file, int index)
 		j++;
 	}
 	main->map.format_map[j] = NULL;
-	free_tab(tab_file);
 	if (!main->player.pos_x || !main->player.pos_y)
 		return (1);
+	free_tab(tab_file);
 	main->map.format_map = reformatting_map(main->map.format_map);
 	return (0);
 }
